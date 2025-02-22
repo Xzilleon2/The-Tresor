@@ -189,7 +189,7 @@
                 </div>
                 <div class="col-lg p-5">
                     <form action="">
-                        <input type="email" name="emailForm" value="Enter Your Email Adress"
+                        <input type="email" name="emailForm" placeholder="Enter Your Email Address"
                         style="background: transparent; border: none; border-bottom: 1px solid white;
                         width: 300px; padding-bottom: 8px; color: white;">
                         <input type="submit" value="Subscribe >"
