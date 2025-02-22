@@ -21,6 +21,13 @@
         body h1{
             font-family: 'Analogue', san-serif;
         }
+        body a{
+            text-decoration: none;
+            color: white;
+        }
+        body a:hover{
+            text-decoration: underline;
+        }
     </style>
 </head>
 <body>
@@ -109,7 +116,7 @@
         </div>
 
          <!-- High Light Container -->
-        <div class="container-fluid p-2 my-5 bg-primary-subtle">
+        <div class="container-fluid p-2 my-5" style="background-color: #405751;">
             <div class="container m-5 position-relative d-flex justify-content-center">
                 
                 <!-- Image Container (Reference for Overlapping) -->
@@ -163,7 +170,60 @@
                     <a class="btn btn-outline-dark" href="">Check Availability</a>
                 </div>
             </div>
-        </div>        
+        </div>  
+        
+        <div class="container-fluid p-5 text-light" style="background-color: #282B32;">
+            <div class="row">
+                <div class="col-lg p-3">
+                    <h1>
+                        Signup For Special <br>
+                        Offers and Promotions
+                    </h1>
+                </div>
+                <div class="col-lg p-5">
+                    <form action="">
+                        <input type="email" name="emailForm" value="Enter Your Email Adress"
+                        style="background: transparent; border: none; border-bottom: 1px solid white;
+                        width: 300px; padding-bottom: 8px; color: white;">
+                        <input type="submit" value="Subscribe >"
+                        style="border: none; background: transparent; padding-bottom: 8px; color: white;">
+                    </form>
+                </div>
+               
+            </div>
+        </div>
+
+        <!--Footer-->
+        <footer class="container-fluid text-light d-flex" style="background-color: #405751;">
+            <div class="col-sm-16 p-5 mx-3">
+                <div class="row mb-3">
+                    <img src="Resources/Tresor.png" alt="" style="height: 150px; width: 200px;">
+                </div>
+                <div class="row">
+                    <p>Copyright The Tresor. All Right Reserved.</p>
+                </div>
+            </div>
+            <div class="col-sm-2 p-5 mx-3">
+                <p>MENU</p>
+                <div class="row">
+                    <a href="">Home</a>
+                    <a href="">Rooms</a>
+                    <a href="">About</a>
+                    <a href="">Contact</a>
+                </div>
+            </div>
+            <div class="col-sm-16 p-5 mx-3">
+                <p>CONTACT</p>
+                <div class="row">
+                    <p>TheTresor@gmail.com</p>
+                    <P>112 239 4612</P>
+                    <p>Saint St. Bario Obrero, <br>
+                        Davao City Davao Del Sur
+                    </p>
+                    <p><a href="">Terms of Service</a></p>
+                </div>
+            </div>
+        </footer>
     </div>
     
     
