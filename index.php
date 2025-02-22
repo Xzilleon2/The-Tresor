@@ -46,12 +46,14 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto text-center">
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Home</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Rooms</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Contact</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
-                <!-- Move BOOK NOW button to the right -->
-                <a href="#" class="btn btn-outline-light ms-auto d-none d-lg-block">BOOK NOW</a>
+                <!-- BOOK NOW button -->
+                <button class="btn bg-transparent btn-outline-dark" data-bs-toggle="modal"
+                data-bs-target="#LoginVerify">BOOK NOW</button>
+                
             </div>
         </div>
     </nav>
@@ -140,7 +142,7 @@
         <!--Listing-->
         <div class="container-fluid p-2 d-flex flex-column align-items-center">
             <div class="col-md-8 p-3 my-5">
-                <p>Rooms</p>
+                <p id="Rooms">Rooms</p>
                 <h1>Stay With Us</h1>
                 <div class="row">
                     <div class="col-lg my-3">
@@ -194,7 +196,7 @@
         </div>
 
         <!--Footer-->
-        <footer class="container-fluid text-light d-flex" style="background-color: #405751;">
+        <footer class="container-fluid text-light d-flex" style="background-color: #405751;" id="Contact">
             <div class="col-sm-16 p-5 mx-3">
                 <div class="row mb-3">
                     <img src="Resources/Tresor.png" alt="" style="height: 150px; width: 200px;">
@@ -225,8 +227,8 @@
             </div>
         </footer>
     </div>
-    
-    
+
+    <?php include 'Verify/Login.php'; ?>
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
