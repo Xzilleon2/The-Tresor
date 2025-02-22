@@ -174,6 +174,7 @@
             </div>
         </div>  
         
+        <!--Email Subs-->
         <div class="container-fluid p-5 text-light" style="background-color: #282B32;">
             <div class="row">
                 <div class="col-lg p-3">
