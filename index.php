@@ -70,7 +70,7 @@
                 Tresor is a smart platform that helps travelers find, compare, and <br>
                 book the best local hotels and Airbnb stays with ease.
             </p>
-            <a href="#" class="btn btn-outline-light px-4 py-2">Explore</a>
+            <a href="#About" class="btn btn-outline-light px-4 py-2" >Explore</a>
         </div>
     </div>
 
