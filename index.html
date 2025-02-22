@@ -6,6 +6,8 @@
     <title>The Tresor</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+
     <style>
         #banner {
             background: url('Resources/BannerPic.jpg') no-repeat center center;
@@ -13,14 +15,22 @@
             position: relative;
             height: 700px;
         }
+        body p{
+            font-family: 'Roboto', san-serif;
+        }
+        body h1{
+            font-family: 'Analogue', san-serif;
+        }
     </style>
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent position-absolute top-0 start-0 w-100 z-3">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
         <div class="container">
             <!-- Brand and Toggler -->
-            <a class="navbar-brand text-white" href="#">Brand</a>
+            <a class="navbar-brand text-white" href="#">
+                <img src="Resources/Tresor.png" alt="" style="height: 100px; width: 130px;">
+            </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -43,8 +53,11 @@
     <!-- Banner Section -->
     <div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center text-light" id="banner">
         <div class="container">
-            <h1 class="display-4 fw-bold m-3">DISCOVER SERENITY<br>AWAY FROM HOME</h1>
-            <p class="fs-6 px-3 m-3">Tresor is a smart platform that helps travelers find, compare, and book the best local hotels and Airbnb stays with ease.</p>
+            <h1 class="display-4 fw-bold m-3" style="font-family: 'rosarivo', serif;">DISCOVER SERENITY<br>AWAY FROM HOME</h1>
+            <p class="fs-6 px-3 m-3">
+                Tresor is a smart platform that helps travelers find, compare, and <br>
+                book the best local hotels and Airbnb stays with ease.
+            </p>
             <a href="#" class="btn btn-outline-light px-4 py-2">Explore</a>
         </div>
     </div>
@@ -52,7 +65,10 @@
     <!--About Section-->
     <div class="container-fluid text-dark py-5">
         <div class="container text-center">
-            <p>Sunrise and sunset are simply beautiful. Enjoy them while you're on vacation!</p>
+            <p>Sunrises and sunsets are simply beautiful. Enjoy them while you’re on vacation! <br>
+                Let the journey begin, a world of adventures, <br>
+                relaxation, and memories awaits!
+            </p>
         </div>
         <div class="container">
             <div class="row m-5">
@@ -90,33 +106,65 @@
                     <a href="#" class="btn btn-outline-dark w-50">Explore</a>
                 </div>
             </div>
+        </div>
+
+         <!-- High Light Container -->
+        <div class="container-fluid p-2 my-5 bg-primary-subtle">
+            <div class="container m-5 position-relative d-flex justify-content-center">
+                
+                <!-- Image Container (Reference for Overlapping) -->
+                <div class="col-12 col-md-8 position-relative">
+                    <img class="img-fluid w-80" src="Resources/b.png" alt="Image" style="height: 400px; object-fit: cover;">
+                </div>
+
+                <!-- Text Container (Overlapping Card) -->
+                <div class="col-12 col-md-5 bg-transparent border-none shadow-lg p-5 text-center text-dark
+                    text-md-start position-absolute top-50 start-50 translate-middle"
+                    style="border-radius: 10px; max-width: 400px;">
+                    <p>Pool Bar</p>
+                    <h1>The Canal <br> Club Poolside</h1>
+                    <p>Enjoy a luxury poolside experience with refreshing cocktails and an unforgettable ambiance.</p>
+                    <a class="btn btn-outline-dark w-50" href="">Explore</a>
+                </div>
+                
+            </div>
+        </div>
+        
+        <!--Listing-->
+        <div class="container-fluid p-2 d-flex flex-column align-items-center">
+            <div class="col-md-8 p-3 my-5">
+                <p>Rooms</p>
+                <h1>Stay With Us</h1>
+                <div class="row">
+                    <div class="col-lg my-3">
+                        <img src="Resources/b.png" alt="" style="height: 150px; width: 180px;">
+                        <h1>Room1</h1>
+                        <p>Bla Bla Bla Bla</p>
+                        <a class="btn btn-outline-dark" href="">View here ></a>
+                    </div>
+                    <div class="col-md my-3">
+                        <img src="Resources/b.png" alt="" style="height: 150px; width: 180px;">
+                        <h1>Room2</h1>
+                        <p>Bla Bla Bla Bla</p>
+                        <a class="btn btn-outline-dark" href="">View here ></a>
+                    </div>
+                    <div class="col-md my-3">
+                        <img src="Resources/b.png" alt="" style="height: 150px; width: 180px;">
+                        <h1>Room3</h1>
+                        <p>Bla Bla Bla Bla</p>
+                        <a class="btn btn-outline-dark" href="">View here ></a>
+                    </div>
+                </div>
+                <div class="container d-flex flex-column align-items-center">
+                    <h1 class="d-flex my-4 flex-column align-items-center text-center">
+                        Come as you are and we will <br> 
+                        take care of the rest
+                    </h1>
+                    <a class="btn btn-outline-dark" href="">Check Availability</a>
+                </div>
+            </div>
         </div>        
     </div>
-    
-    
-    <!-- High Light Container -->
-    <div class="container-fluid p-5 bg-success">
-        <div class="container position-relative d-flex justify-content-center">
-            
-            <!-- Image Container (Reference for Overlapping) -->
-            <div class="col-12 col-md-8 position-relative">
-                <img class="img-fluid w-80" src="Resources/b.png" alt="Image" style="height: 400px; object-fit: cover;">
-            </div>
-
-            <!-- Text Container (Overlapping Card) -->
-            <div class="col-10 col-md-5 bg-transparent border-none shadow-lg p-4 text-center text-dark
-                 text-md-start position-absolute top-50 start-50 translate-middle"
-                style="border-radius: 10px; max-width: 400px;">
-                <p>Pool Bar</p>
-                <h1>The Canal <br> Club Poolside</h1>
-                <p>Enjoy a luxury poolside experience with refreshing cocktails and an unforgettable ambiance.</p>
-                <a class="btn btn-outline-dark w-50" href="">Explore</a>
-            </div>
-            
-        </div>
-    </div>
-
-
     
     
 
