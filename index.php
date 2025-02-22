@@ -10,10 +10,13 @@
 
     <style>
         #banner {
-            background: url('Resources/BannerPic.jpg') no-repeat center center;
+            background: url('Resources/Banner.png') no-repeat center center;
             background-size: cover;
             position: relative;
             height: 700px;
+        }
+        body{
+            background: url(Resources/Back.jpg) cover;
         }
         body p{
             font-family: 'Roboto', san-serif;
@@ -32,10 +35,10 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-transparent fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
         <div class="container">
             <!-- Brand and Toggler -->
-            <a class="navbar-brand text-white" href="#">
+            <a class="navbar-brand text-dark" href="#">
                 <img src="Resources/Tresor.png" alt="" style="height: 100px; width: 130px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
@@ -45,13 +48,13 @@
             <!-- Collapsible Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto text-center">
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Home</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">Services</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
                 <!-- BOOK NOW button -->
-                <button class="btn bg-transparent btn-outline-dark" data-bs-toggle="modal"
+                <button class="btn bg-transparent text-light btn-outline-light" data-bs-toggle="modal"
                 data-bs-target="#LoginVerify">BOOK NOW</button>
                 
             </div>
@@ -87,7 +90,7 @@
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
                 </div>
                 <div class="col-md-12 col-lg-6 d-flex align-items-center justify-content-center">
-                    <img class="img-fluid w-70 h-50" src="Resources/b.png" alt="">
+                    <img class="img-fluid w-80 h-120" src="Resources/Buenavista.jpg" alt="">
                 </div>
             </div>
         </div>
@@ -96,20 +99,20 @@
         <div class="row d-flex" style="height: auto;">
             <div class="col-12 col-md-6 d-flex flex-column p-3">
                 <div class="row mb-5 justify-content-center align-items-start">
-                    <img class="img-fluid w-75" src="Resources/b.png" alt="">
+                    <img class="img-fluid w-75" src="Resources/Urya.jpg" alt="">
                 </div>
                 <div class="row mt-5 p-5 d-flex justify-content-center align-items-end">
-                    <img class="img-fluid w-75" src="Resources/BannerPic.jpg" alt="">
+                    <img class="img-fluid w-75" src="Resources/Heavens.jpg" alt="">
                 </div>
             </div>
 
             <!--2nd Column-->
             <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-3">
                 <div class="row justify-content-center align-items-end mt-5 p-5">
-                    <img class="img-fluid w-75" src="Resources/culture.jpg" alt="">
+                    <img class="img-fluid w-100" src="Resources/Mergrande.jpg" alt="">
                 </div>
                 <div class="mt-auto w-50">
-                    <p>Services</p>
+                    <p id="Services">Services</p>
                     <h1>Luxury Plaza <br> Resort For You</h1>
                     <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
                     <a href="#" class="btn btn-outline-dark w-50">Explore</a>
@@ -123,7 +126,7 @@
                 
                 <!-- Image Container (Reference for Overlapping) -->
                 <div class="col-12 col-md-8 position-relative">
-                    <img class="img-fluid w-80" src="Resources/b.png" alt="Image" style="height: 400px; object-fit: cover;">
+                    <img class="img-fluid w-80" src="Resources/Beach.jpg" alt="Image" style="height: 400px; object-fit: cover;">
                 </div>
 
                 <!-- Text Container (Overlapping Card) -->
@@ -146,19 +149,19 @@
                 <h1>Stay With Us</h1>
                 <div class="row">
                     <div class="col-lg my-3">
-                        <img src="Resources/b.png" alt="" style="height: 150px; width: 180px;">
+                        <img src="Resources/Room1.jpg" alt="" style="height: 150px; width: 180px;">
                         <h1>Room1</h1>
                         <p>Bla Bla Bla Bla</p>
                         <a class="btn btn-outline-dark" href="">View here ></a>
                     </div>
                     <div class="col-md my-3">
-                        <img src="Resources/b.png" alt="" style="height: 150px; width: 180px;">
+                        <img src="Resources/Room2.jpg" alt="" style="height: 150px; width: 180px;">
                         <h1>Room2</h1>
                         <p>Bla Bla Bla Bla</p>
                         <a class="btn btn-outline-dark" href="">View here ></a>
                     </div>
                     <div class="col-md my-3">
-                        <img src="Resources/b.png" alt="" style="height: 150px; width: 180px;">
+                        <img src="Resources/Room3.jpg" alt="" style="height: 150px; width: 180px;">
                         <h1>Room3</h1>
                         <p>Bla Bla Bla Bla</p>
                         <a class="btn btn-outline-dark" href="">View here ></a>
@@ -173,9 +176,10 @@
                 </div>
             </div>
         </div>  
-        
-        <!--Email Subs-->
-        <div class="container-fluid p-5 text-light" style="background-color: #282B32;">
+    </div>
+
+            <!--Email Subs-->
+            <div class="container-fluid p-5 text-light" style="background-color: #282B32;">
             <div class="row">
                 <div class="col-lg p-3">
                     <h1>
@@ -227,7 +231,6 @@
                 </div>
             </div>
         </footer>
-    </div>
 
     <?php include 'Verify/Login.php'; ?>
 
