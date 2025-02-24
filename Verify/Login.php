@@ -1,4 +1,4 @@
-
+<?php include'../Connection/db_connect.php' ?>
 <!--Login Modal-->
 <div class="modal fade" id="LoginVerify" tabindex="-1" aria-labelledby="modal-title" aria-hidden="true">
     <div class="modal-dialog">
