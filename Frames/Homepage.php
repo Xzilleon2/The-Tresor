@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../Connection/db_connect.php');
+
 // Check if user is logged in
 if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
     header("Location: ../index.php"); // Redirect to login if session is empty
@@ -33,15 +34,19 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
             <!-- Collapsible Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto text-center">
-                <li class="nav-item mx-2"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">Services</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
-                <!-- BOOK NOW button -->
-                <button class="btn bg-transparent text-light btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#LoginVerify">BOOK NOW</button>
+                <!--Dashboard button -->
+                <div class="collapse navbar-collapse">
+                    <ul class="navbar-nav mx-auto">
+                        <li class="nav-item"><a class="nav-link text-white text-decoration-none"
+                         href="Dashboard.php"><?php echo $_SESSION['email'] ?></a></li> <br>
+                         <li class="nav-item mx-2"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
+                    </ul>
+                </div>
                 
             </div>
         </div>
