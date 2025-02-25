@@ -15,10 +15,10 @@
                 <div class="container d-flex flex-column text-center">
                     <!-- Login Form -->
                     <form method="post" action="index.php" id="loginForm">
-                        <label for="username">Username</label> <br>
-                        <input type="text" name="username"> <br>
+                        <label for="email">Email</label> <br>
+                        <input type="email" name="email" required> <br>
                         <label for="password">Password</label> <br>
-                        <input type="password" name="password"> <br>
+                        <input type="password" name="password" required> <br>
                         <label>Don't have an Account? <a href="#" id="showSignup" style="color: black;">Signup</a></label> <br>
                         <input type="submit" name="login" value="login">
                         
@@ -26,12 +26,17 @@
 
                     <!-- Signup Form (Hidden by Default) -->
                     <form method="post" action="index.php" id="signupForm" style="display: none;">
-                        <label for="signup_name">Username</label> <br>
-                        <input type="text" name="signup_name"> <br>
-                        <label for="signup_email">Email</label> <br>
-                        <input type="email" name="signup_email"> <br>
-                        <label for="signup_password">Password</label> <br>
-                        <input type="password" name="signup_password"> <br>
+                        <label for="Fname">First Name</label> <br>
+                        <input type="text" name="Fname"> <br> 
+                        <label for="Lname">Last Name</label> <br>
+                        <input type="text" name="Lname"> <br>
+                        <label for="password">Password</label> <br>
+                        <input type="password" name="password"> <br>
+                        <label for="email">Email</label> <br>
+                        <input type="email" name="email"> <br>
+                        <label for="contactNum">Contact Number</label> <br>
+                        <input type="text" name="contactNum"> <br>
+                        <input type="hidden" name="role" value="user"> <br>
                         <label>Already have an Account? <a href="#" id="showLogin" style="color: black;">Login</a></label> <br>
                         <input type="submit" name="register" value="register">
                     </form>

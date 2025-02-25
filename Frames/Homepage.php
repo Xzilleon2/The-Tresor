@@ -2,7 +2,7 @@
 session_start();
 include('../Connection/db_connect.php');
 // Check if user is logged in
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
     header("Location: ../index.php"); // Redirect to login if session is empty
     exit();
 }

@@ -216,10 +216,10 @@
             <div class="col-sm-2 p-5 mx-3">
                 <p>MENU</p>
                 <div class="row">
-                    <a href="">Home</a>
-                    <a href="">Rooms</a>
-                    <a href="">About</a>
-                    <a href="">Contact</a>
+                    <a href="#banner">Home</a>
+                    <a href="#Rooms">Rooms</a>
+                    <a href="#About">About</a>
+                    <a href="#Contact">Contact</a>
                 </div>
             </div>
             <div class="col-sm-16 p-5 mx-3">
