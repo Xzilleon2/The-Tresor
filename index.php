@@ -1,3 +1,6 @@
+<?php
+     include 'Verify/Login.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +38,7 @@
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-transparent fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 fixed-top">
         <div class="container">
             <!-- Brand and Toggler -->
             <a class="navbar-brand text-dark" href="#">
@@ -231,8 +234,6 @@
                 </div>
             </div>
         </footer>
-
-    <?php include 'Verify/Login.php'; ?>
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
