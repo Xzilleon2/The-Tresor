@@ -30,6 +30,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
                     <th>Last Name</th>
                     <th>Email</th>
                     <th>Contact Number</th>
+                    <th>Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -40,7 +41,87 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
                     <td><?= $row['usr_LastName'] ?></td>
                     <td><?= $row['usr_email'] ?></td>
                     <td><?= $row['usr_contactNum'] ?></td>
+                    <td>
+                        <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                         data-bs-target="#updateModal<?= $row['usr_id']?>">Update</button>
+
+                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
+                         data-bs-target="#deleteModal<?= $row['usr_id']?>">Delete</button>
+                    </td>
                 </tr>
+                <!-- Update Modal -->
+                <div class="modal fade" id="updateModal<?= $row['usr_id'] ?>" tabindex="-1"
+                    role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="updateModalLabel">Update User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <form action="../Verify/updateuser.php" method="POST">
+                                    <div class="form-group">
+                                        <label for="usr_FirstName">First Name</label>
+                                        <input type="text" class="form-control" id="usr_FirstName"
+                                            name="usr_FirstName" value="<?= $row['usr_FirstName'] ?>"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr_LastName">Last Name</label>
+                                        <input type="text" class="form-control" id="usr_LastName"
+                                            name="usr_LastName" value="<?= $row['usr_LastName'] ?>"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr_email">Email</label>
+                                        <input type="text" class="form-control" id="usr_email"
+                                            name="usr_email" value="<?= $row['usr_email'] ?>"
+                                            required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="usr_contactNum">Contact Number</label>
+                                        <input type="text" class="form-control" id="usr_contactNum"
+                                            name="usr_contactNum" value="<?= $row['usr_contactNum'] ?>"
+                                            required>
+                                    </div>
+                                    <input type="hidden" name="usr_id"
+                                        value="<?= $row['usr_id'] ?>">
+                                    <button type="submit" class="btn btn-primary">Save
+                                        Changes</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Delete Modal -->
+                <div class="modal fade" id="deleteModal<?= $row['usr_id'] ?>" tabindex="-1"
+                    role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                    aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            <div class="modal-body">
+                                <p>Are you sure you want to delete this user?</p>
+                                <form action="../Verify/deleteuser.php" method="POST">
+                                    <input type="hidden" name="usr_id"
+                                        value="<?= $row['usr_id'] ?>">
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="button" class="btn btn-secondary"
+                                        data-dismiss="modal">Cancel</button>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
                 <?php }?>
             </tbody>
         </table>
