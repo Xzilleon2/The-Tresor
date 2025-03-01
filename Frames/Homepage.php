@@ -1,6 +1,7 @@
 <?php
 session_start();
 include('../Connection/db_connect.php');
+include('../Verify/fetchlistingdata.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
@@ -21,39 +22,51 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 fixed-top">
-        <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 d-flex justify-content-center">
+        <div class="container p-0 m-0">
             <!-- Brand and Toggler -->
             <a class="navbar-brand text-dark" href="#">
-                <img src="../Resources/Tresor.png" alt="" style="height: 100px; width: 130px;">
+                <img src="../Resources/Tresor.png" alt="" style="height: 70px; width: 80px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
             </button>
 
             <!-- Collapsible Menu -->
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav mx-auto text-center">
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">Services</a></li>
+            <div class="collapse navbar-collapse d-flex text-center" id="navbarNav">
+                <ul class="navbar-nav mx-auto text-center px-5">
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">HOME</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
-                <!--Dashboard button -->
-                <div class="collapse navbar-collapse">
-                    <ul class="navbar-nav mx-auto">
+                <ul class="navbar-nav">
                         <li class="nav-item"><a class="nav-link text-white text-decoration-none"
                          href="Dashboard.php"><?php echo $_SESSION['email'] ?></a></li> <br>
-                         <li class="nav-item mx-2"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
-                    </ul>
-                </div>
-                
+                         <li class="nav-item"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
+                </ul>
             </div>
         </div>
     </nav>
+    <!--Product Section-->
+    <div class="container-fluid bg-light d-flex align-items-end justify-content-center p-3" style="height: 100vh;">
+        <div class="container-fluid h-75" style="width: 100%; overflow-y: scroll; scrollbar-width: none;">
+            <div class="row">
+            <?php while($row = mysqli_fetch_assoc($result)) { ?>
+                <div class="card d-flex flex-column align-items-center justify-content-center
+                border border-dark w-25 m-3 p-5 shadow-md">
+                        <h3><?= $row['list_title'] ?></h3>
+                        <p><?= $row['list_price'] ?></p>
+                        <p><?= $row['list_description'] ?></P>
+                        <p><?= $row['list_location'] ?></p>
+                </div>
+            <?php }?>
+            </div>
+        </div>
+    </div>
 
-        <!-- Bootstrap Script -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Bootstrap Script -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
 </html>

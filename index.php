@@ -42,7 +42,7 @@
         <div class="container">
             <!-- Brand and Toggler -->
             <a class="navbar-brand text-dark" href="#">
-                <img src="Resources/Tresor.png" alt="" style="height: 100px; width: 130px;">
+                <img src="Resources/Tresor.png" alt="" style="height: 80px; width: 100px;">
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
