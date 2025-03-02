@@ -40,7 +40,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-success d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-center" style="background-color: #405751;">
         <div class="container p-0 m-0">
             <!-- Brand and Toggler -->
             <a class="navbar-brand text-dark" href="#">
@@ -61,7 +61,6 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
                 <ul class="navbar-nav">
                     <li class="nav-item"><a class="nav-link text-white text-decoration-none"
                     href="Dashboard.php"><?php echo $_SESSION['email'] ?></a></li> <br>
-                    <li class="nav-item"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
