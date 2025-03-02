@@ -18,11 +18,29 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <style>
+        body{
+            background: url(../Resources/Back.jpg) cover;
+        }
+        body p{
+            font-family: 'Roboto', san-serif;
+        }
+        body h1{
+            font-family: 'Analogue', san-serif;
+        }
+        body a{
+            text-decoration: none;
+            color: white;
+        }
+        body a:hover{
+            text-decoration: underline;
+        }
+    </style>
 
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 d-flex justify-content-center">
+    <nav class="navbar navbar-expand-lg navbar-light bg-success d-flex justify-content-center">
         <div class="container p-0 m-0">
             <!-- Brand and Toggler -->
             <a class="navbar-brand text-dark" href="#">
@@ -41,26 +59,36 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
                 <ul class="navbar-nav">
-                        <li class="nav-item"><a class="nav-link text-white text-decoration-none"
-                         href="Dashboard.php"><?php echo $_SESSION['email'] ?></a></li> <br>
-                         <li class="nav-item"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
+                    <li class="nav-item"><a class="nav-link text-white text-decoration-none"
+                    href="Dashboard.php"><?php echo $_SESSION['email'] ?></a></li> <br>
+                    <li class="nav-item"><a class="nav-link text-white" href="../Verify/Logout.php">Logout</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    <!--Icons and search Panels-->
+    <div class="container-fluid">
+        <div class="row my-4">
+            <div class="container-fluid d-flex justify-content-end">
+                <form action="">
+                    <input class="form-control border-dark rounded-pill text-dark px-4" type="text" name="search" placeholder="Search">
+                </form>
+            </div>
+        </div>
+    </div>
     <!--Product Section-->
-    <div class="container-fluid bg-light d-flex align-items-end justify-content-center p-3" style="height: 100vh;">
-        <div class="container-fluid h-75" style="width: 100%; overflow-y: scroll; scrollbar-width: none;">
+    <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 100vh;">
+        <div class="container-fluid h-75" style="width: 100%;">
             <div class="row">
-            <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                <div class="card d-flex flex-column align-items-center justify-content-center
-                border border-dark w-25 m-3 p-5 shadow-md">
-                        <h3><?= $row['list_title'] ?></h3>
-                        <p><?= $row['list_price'] ?></p>
+                <?php while($row = mysqli_fetch_assoc($result)) { ?>
+                    <div class="card d-flex flex-column justify-content-center
+                    border border-dark w-25 mx-5 p-3 shadow-md">
+                        <h1><?= $row['list_title'] ?></h1>
                         <p><?= $row['list_description'] ?></P>
                         <p><?= $row['list_location'] ?></p>
-                </div>
-            <?php }?>
+                        <p><?= $row['list_price'] ?></p>
+                    </div>
+                <?php }?>
             </div>
         </div>
     </div>
