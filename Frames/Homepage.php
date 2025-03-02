@@ -35,7 +35,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
             <!-- Collapsible Menu -->
             <div class="collapse navbar-collapse d-flex text-center" id="navbarNav">
                 <ul class="navbar-nav mx-auto text-center px-5">
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">HOME</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">Home</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
