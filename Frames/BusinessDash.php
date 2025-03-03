@@ -15,7 +15,7 @@ include('../Verify/fetchlistingdata.php');
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard</title>
+    <title>Owner Dashboard</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
@@ -58,6 +58,12 @@ include('../Verify/fetchlistingdata.php');
             padding-left: 10px;
             transition: 0.3s;
         }
+        #RecentlyListed {
+            max-height: 350px; /* Adjust height as needed */
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body>
@@ -92,11 +98,11 @@ include('../Verify/fetchlistingdata.php');
                     <!-- Left Column (Recently Visited) -->
                     <div class="col-md-8">
                         <div class="p-3">
-                            <h3>Recently Visited</h3>
+                            <h3>Recently Listed</h3>
                             <div class="container-fluid">
-                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25">
+                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25" id="RecentlyListed">
                                     <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                        <a href="Dashboard.php" class="text-decoration-none text-dark w-25 m-5">
+                                        <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-50">
                                             <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
                                                 <h1><?= $row['list_title'] ?></h1>
                                                 <p><?= $row['list_description'] ?></p>
@@ -113,7 +119,7 @@ include('../Verify/fetchlistingdata.php');
                 <!-- Right Column (Test Part) -->
                 <div class="col-md-4 my-5">
                     <div class="container bg-success bg-opacity-25 p-3 text-center">
-                        <h1>Test Part</h1>
+                        <h1>Actions</h1>
                     </div>
                 </div>
             </div>

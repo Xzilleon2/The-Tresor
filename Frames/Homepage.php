@@ -78,16 +78,17 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
     <!--Product Section-->
     <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 100vh;">
         <div class="container-fluid h-75" style="width: 100%;">
-            <div class="row">
+            <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25">
                 <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                    <div class="card d-flex flex-column justify-content-center
-                    border border-dark w-25 mx-5 p-3 shadow-md">
-                        <h1><?= $row['list_title'] ?></h1>
-                        <p><?= $row['list_description'] ?></P>
-                        <p><?= $row['list_location'] ?></p>
-                        <p><?= $row['list_price'] ?></p>
-                    </div>
-                <?php }?>
+                    <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-25">
+                        <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
+                            <h1><?= $row['list_title'] ?></h1>
+                            <p><?= $row['list_description'] ?></p>
+                            <p><?= $row['list_location'] ?></p>
+                            <p><?= $row['list_price'] ?></p>
+                        </div>
+                    </a>
+                <?php } ?>
             </div>
         </div>
     </div>
