@@ -8,7 +8,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
     header("Location: ../index.php");
     exit();
 }
-if($_SESSION['role'] != 'admin'){
+if($_SESSION['role'] != "admin"){
     header("Location: Homepage.php");
     exit();
 }
@@ -68,27 +68,27 @@ if($_SESSION['role'] != 'admin'){
                             <div class="modal-body">
                                 <form action="../Verify/updateuser.php" method="POST">
                                     <div class="form-group">
-                                        <label for="usr_FirstName">First Name</label>
-                                        <input type="text" class="form-control" id="usr_FirstName"
-                                            name="usr_FirstName" value="<?= $row['usr_FirstName'] ?>"
+                                        <label for="fname">First Name</label>
+                                        <input type="text" class="form-control" id="fname"
+                                            name="fname" value="<?= $row['fname'] ?>"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="usr_LastName">Last Name</label>
-                                        <input type="text" class="form-control" id="usr_LastName"
-                                            name="usr_LastName" value="<?= $row['usr_LastName'] ?>"
+                                        <label for="lname">Last Name</label>
+                                        <input type="text" class="form-control" id="lname"
+                                            name="lname" value="<?= $row['lname'] ?>"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="usr_email">Email</label>
-                                        <input type="text" class="form-control" id="usr_email"
-                                            name="usr_email" value="<?= $row['usr_email'] ?>"
+                                        <label for="email">Email</label>
+                                        <input type="text" class="form-control" id="email"
+                                            name="email" value="<?= $row['email'] ?>"
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="usr_contactNum">Contact Number</label>
-                                        <input type="text" class="form-control" id="usr_contactNum"
-                                            name="usr_contactNum" value="<?= $row['usr_contactNum'] ?>"
+                                        <label for="usr_contactNum">Role</label>
+                                        <input type="text" class="form-control" id="role"
+                                            name="role" value="<?= $row['role'] ?>"
                                             required>
                                     </div>
                                     <input type="hidden" name="usr_id"
@@ -102,7 +102,7 @@ if($_SESSION['role'] != 'admin'){
                 </div>
 
                 <!-- Delete Modal -->
-                <div class="modal fade" id="deleteModal<?= $row['usr_id'] ?>" tabindex="-1"
+                <div class="modal fade" id="deleteModal<?= $row['id'] ?>" tabindex="-1"
                     role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -116,8 +116,8 @@ if($_SESSION['role'] != 'admin'){
                             <div class="modal-body">
                                 <p>Are you sure you want to delete this user?</p>
                                 <form action="../Verify/deleteuser.php" method="POST">
-                                    <input type="hidden" name="usr_id"
-                                        value="<?= $row['usr_id'] ?>">
+                                    <input type="hidden" name="id"
+                                        value="<?= $row['id'] ?>">
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                     <button type="button" class="btn btn-secondary"
                                         data-dismiss="modal">Cancel</button>
