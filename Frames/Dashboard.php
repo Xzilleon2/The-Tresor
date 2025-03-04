@@ -1,13 +1,17 @@
 <?php 
 session_start();
 
-if (!isset($_SESSION["email"]) && !isset($_SESSION["passowrd"])){
+if (!isset($_SESSION["email"])){
     header("Location:../index.php");
+    exit();
+}
+if($_SESSION['role'] != 'user'){
+    header("Location: Homepage.php"); 
     exit();
 }
 
 include('../Connection/db_connect.php');
-include('../Verify/fetchlistingdata.php');
+include('../Verify/fetchbusiness.php');
 
 ?>
 <!DOCTYPE html>
@@ -58,6 +62,12 @@ include('../Verify/fetchlistingdata.php');
             padding-left: 10px;
             transition: 0.3s;
         }
+        #RecentlyListed {
+            max-height: 350px; /* Adjust height as needed */
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+        }
     </style>
 </head>
 <body>
@@ -94,14 +104,13 @@ include('../Verify/fetchlistingdata.php');
                         <div class="p-3">
                             <h3>Recently Visited</h3>
                             <div class="container-fluid">
-                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25">
+                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25"id="RecentlyListed">
                                     <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                        <a href="Dashboard.php" class="text-decoration-none text-dark w-25 m-5">
+                                        <a href="Dashboard.php" class="text-decoration-none text-dark w-50 m-5">
                                             <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
-                                                <h1><?= $row['list_title'] ?></h1>
-                                                <p><?= $row['list_description'] ?></p>
-                                                <p><?= $row['list_location'] ?></p>
-                                                <p><?= $row['list_price'] ?></p>
+                                                <h1><?= $row['name'] ?></h1>
+                                                <p><?= $row['description'] ?></p>
+                                                <p><?= $row['location'] ?></p>
                                             </div>
                                         </a>
                                     <?php } ?>

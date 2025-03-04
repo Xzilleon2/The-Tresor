@@ -1,11 +1,11 @@
 <?php
 session_start();
 include('../Connection/db_connect.php');
-include('../Verify/fetchlistingdata.php');
+include('../Verify/fetchbusiness.php');
 
 // Check if user is logged in
-if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
-    header("Location: ../index.php"); // Redirect to login if session is empty
+if (!isset($_SESSION['email'])) {
+    header("Location: ../index.php");
     exit();
 }
 ?>
@@ -81,11 +81,10 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
             <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25">
                 <?php while($row = mysqli_fetch_assoc($result)) { ?>
                     <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-25">
-                        <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
-                            <h1><?= $row['list_title'] ?></h1>
-                            <p><?= $row['list_description'] ?></p>
-                            <p><?= $row['list_location'] ?></p>
-                            <p><?= $row['list_price'] ?></p>
+                        <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-lg">
+                            <h1><?= $row['name'] ?></h1>
+                            <p><?= $row['description'] ?></p>
+                            <p><?= $row['location'] ?></p>
                         </div>
                     </a>
                 <?php } ?>

@@ -5,9 +5,13 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["passowrd"])){
     header("Location:../index.php");
     exit();
 }
+if($_SESSION['role'] != 'owner'){
+    header("Location: Homepage.php"); // Redirect to login if session is empty
+    exit();
+}
 
 include('../Connection/db_connect.php');
-include('../Verify/fetchlistingdata.php');
+include('../Verify/fetchbusiness.php');
 
 ?>
 <!DOCTYPE html>
@@ -104,10 +108,9 @@ include('../Verify/fetchlistingdata.php');
                                     <?php while($row = mysqli_fetch_assoc($result)) { ?>
                                         <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-50">
                                             <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
-                                                <h1><?= $row['list_title'] ?></h1>
-                                                <p><?= $row['list_description'] ?></p>
-                                                <p><?= $row['list_location'] ?></p>
-                                                <p><?= $row['list_price'] ?></p>
+                                                <h1><?= $row['name'] ?></h1>
+                                                <p><?= $row['description'] ?></p>
+                                                <p><?= $row['location'] ?></p>
                                             </div>
                                         </a>
                                     <?php } ?>
@@ -118,8 +121,17 @@ include('../Verify/fetchlistingdata.php');
 
                 <!-- Right Column (Test Part) -->
                 <div class="col-md-4 my-5">
-                    <div class="container bg-success bg-opacity-25 p-3 text-center">
-                        <h1>Actions</h1>
+                    <div class="container text-light bg-opacity-25 p-3" style="background-color: #405751;">
+                        <h4>Actions</h4>
+                        <!--Add Button-->
+                        <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
+                        data-bs-target="#addModal">Add</button> <br>
+                        <!--Update Button-->
+                        <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
+                        data-bs-target="#updateModal">Update</button> <br>
+                        <!--Delete Button-->
+                        <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
+                        data-bs-target="#deleteModal">Delete</button></li>     
                     </div>
                 </div>
             </div>

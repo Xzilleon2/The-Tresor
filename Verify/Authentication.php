@@ -14,7 +14,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
     $password = $_POST['password'];
 
     // QUERY
-    $Query = "SELECT * FROM users WHERE usr_email = ?";
+    $Query = "SELECT * FROM users WHERE email = ?";
     $stmt = $conn->prepare($Query);
 
     if($stmt === false){
@@ -28,34 +28,45 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
     if($result->num_rows > 0){
         $row = $result->fetch_assoc();
 
-            if(password_verify($password, $row['usr_password'])){
-                $_SESSION['email'] = $email;
-                header('Location: Frames/Homepage.php');
-                exit();
-            }
+            if(password_verify($password, $row['password'])){
+                $_SESSION['email'] = $row['email'];
+                $_SESSION['role'] = $row['role'] ;
+                
+                if($_SESSION['role'] == "admin"){
+                    header('Location: Frames/adminDashboard.php');
+                    exit();
+                } elseif($_SESSION['role'] == "owner"){ 
+                    header('Location: Frames/BusinessDash.php');
+                    exit();
+                } elseif($_SESSION['role'] == "user"){
+                    header('Location: Frames/Homepage.php');
+                    exit();
+                } else {
+                    echo "<script>alert('Error in finding role');</script>";
+                }
+            } 
     } else {
         echo "<script>alert('Invalid username or password');</script>";
     }
 }
 
 if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['register'])){
-    $firstname = $_POST['Fname'];
-    $Lastname = $_POST['Lname'];
+    $firstname = $_POST['fname'];
+    $lastname = $_POST['lname'];
     $password = $_POST['password'];
     $email = $_POST['email'];
-    $contactnumber = $_POST['contactNum'];
-    $role = $_POST['role'];
+    $role = "user";
 
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    $query = 'INSERT INTO users(usr_FirstName, usr_LastName, usr_password, usr_email, usr_contactNum ,usr_role) VALUES (?,?,?,?,?,?)';
+    $query = 'INSERT INTO users(fname, lname, email, password, role) VALUES (?,?,?,?,?)';
     $stmt = $conn->prepare($query);
 
     if($stmt === false){
         die("Error Preparing Statement".$conn->error);
     }
 
-    $stmt->bind_param("ssssss", $firstname, $Lastname, $hashed_password, $email, $contactnumber, $role);
+    $stmt->bind_param("sssss", $firstname, $lastname, $email, $hashed_password, $role);
     $stmt ->execute();
 
     if($stmt->affected_rows > 0){

@@ -1,5 +1,21 @@
-<?php
-     include 'Verify/Login.php'; 
+<?php 
+include("Connection/db_connect.php");
+include("Verify/Login.php");
+
+// Check if user is logged in
+if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
+    if($_SESSION['role'] == 'admin'){
+        header("Location: Frames/adminDashboard.php");
+        exit();
+    } elseif($_SESSION['role'] == 'owner') {
+        header("Location: Frames/BusinessDash.php");
+        exit();
+    } else {
+        header("Location: Frames/Homepage.php");
+        exit();
+    }
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">

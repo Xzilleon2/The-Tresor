@@ -24,21 +24,19 @@
                         
                     </form>
 
-                    <!-- Signup Form (Hidden by Default) -->
+                    <!-- Signup Form user (Hidden by Default) -->
                     <form method="post" action="index.php" id="signupForm" style="display: none;">
                         <label for="Fname">First Name</label> <br>
-                        <input type="text" name="Fname"> <br> 
+                        <input type="text" name="fname"> <br> 
                         <label for="Lname">Last Name</label> <br>
-                        <input type="text" name="Lname"> <br>
+                        <input type="text" name="lname"> <br>
                         <label for="password">Password</label> <br>
                         <input type="password" name="password"> <br>
                         <label for="email">Email</label> <br>
                         <input type="email" name="email"> <br>
-                        <label for="contactNum">Contact Number</label> <br>
-                        <input type="text" name="contactNum"> <br>
                         <input type="hidden" name="role" value="user"> <br>
                         <label>Already have an Account? <a href="#" id="showLogin" style="color: black;">Login</a></label> <br>
-                        <input type="submit" name="register" value="register">
+                        <input type="submit" name="register" value="Register">
                     </form>
                 </div>
             </div>

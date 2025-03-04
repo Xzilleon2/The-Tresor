@@ -5,7 +5,11 @@ include("../Verify/Fetchuser.php");
 
 // Check if user is logged in
 if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
-    header("Location: ../index.php"); // Redirect to login if session is empty
+    header("Location: ../index.php");
+    exit();
+}
+if($_SESSION['role'] != 'admin'){
+    header("Location: Homepage.php");
     exit();
 }
 ?>
@@ -29,28 +33,28 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
                     <th>First Name</th>
                     <th>Last Name</th>
                     <th>Email</th>
-                    <th>Contact Number</th>
+                    <th>Role</th>
                     <th>Action</th>
                 </tr>
             </thead>
             <tbody>
                 <?php while ($row = mysqli_fetch_assoc($result)) { ?>
                 <tr>
-                    <td><?= $row['usr_id'] ?></td>
-                    <td><?= $row['usr_FirstName'] ?></td>
-                    <td><?= $row['usr_LastName'] ?></td>
-                    <td><?= $row['usr_email'] ?></td>
-                    <td><?= $row['usr_contactNum'] ?></td>
+                    <td><?= $row['id'] ?></td>
+                    <td><?= $row['fname'] ?></td>
+                    <td><?= $row['lname'] ?></td>
+                    <td><?= $row['email'] ?></td>
+                    <td><?= $row['role'] ?></td>
                     <td>
                         <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                         data-bs-target="#updateModal<?= $row['usr_id']?>">Update</button>
+                         data-bs-target="#updateModal<?= $row['id']?>">Update</button>
 
                          <button class="btn btn-warning btn-sm" data-bs-toggle="modal"
-                         data-bs-target="#deleteModal<?= $row['usr_id']?>">Delete</button>
+                         data-bs-target="#deleteModal<?= $row['id']?>">Delete</button>
                     </td>
                 </tr>
                 <!-- Update Modal -->
-                <div class="modal fade" id="updateModal<?= $row['usr_id'] ?>" tabindex="-1"
+                <div class="modal fade" id="updateModal<?= $row['id'] ?>" tabindex="-1"
                     role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
                     <div class="modal-dialog" role="document">
                         <div class="modal-content">
@@ -88,7 +92,7 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
                                             required>
                                     </div>
                                     <input type="hidden" name="usr_id"
-                                        value="<?= $row['usr_id'] ?>">
+                                        value="<?= $row['id'] ?>">
                                     <button type="submit" class="btn btn-primary">Save
                                         Changes</button>
                                 </form>
