@@ -68,6 +68,10 @@ include('../Verify/fetchbusiness.php');
             overflow-x: hidden;
             scrollbar-width: none;
         }
+        #BusinessImg {
+            height: 100%;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -108,6 +112,9 @@ include('../Verify/fetchbusiness.php');
                                     <?php while($row = mysqli_fetch_assoc($result)) { ?>
                                         <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-50">
                                             <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
+                                                <div class="container-fluid d-flex justify-content-center">
+                                                    <img src="../Resources/BusinessImg/<?= $row['image_path'] ?>" alt="Business image" id="BusinessImg">
+                                                </div>
                                                 <h1><?= $row['name'] ?></h1>
                                                 <p><?= $row['description'] ?></p>
                                                 <p><?= $row['location'] ?></p>
@@ -119,24 +126,92 @@ include('../Verify/fetchbusiness.php');
                         </div>
                     </div>
 
-                <!-- Right Column (Test Part) -->
+                <!-- Right Column (Action Part) -->
                 <div class="col-md-4 my-5">
                     <div class="container text-light bg-opacity-25 p-3" style="background-color: #405751;">
                         <h4>Actions</h4>
                         <!--Add Button-->
                         <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
-                        data-bs-target="#addModal">Add</button> <br>
+                        data-bs-target="#addModal">List Business</button> <br>
                         <!--Update Button-->
                         <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
-                        data-bs-target="#updateModal">Update</button> <br>
+                        data-bs-target="#updateModal">Update Listed</button> <br>
                         <!--Delete Button-->
                         <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
-                        data-bs-target="#deleteModal">Delete</button></li>     
+                        data-bs-target="#deleteModal">Delete Listed</button></li>     
                     </div>
                 </div>
             </div>
         </div>
-                
+
+        <!--Modals-->
+        <!-- Add Modal -->
+        <div class="modal fade" id="addModal" tabindex="-1"
+            role="dialog" aria-labelledby="addModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="addModalLabel">Business Informations</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <form action="../Verify/addBusiness.php" method="POST" enctype="multipart/form-data">
+                            <div class="form-group">
+                                <label for="name">Name</label>
+                                <input type="text" class="form-control" id="name"
+                                    name="name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="description">Description</label>
+                                <input type="text" class="form-control" id="description"
+                                    name="description" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="location">Location</label>
+                                <input type="text" class="form-control" id="location"
+                                    name="location" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="image">Image</label>
+                                <input type="file" class="form-control" id="image" name="image" required> <br>
+                            </div>
+                            <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Delete Modal -->
+        <div class="modal fade" id="deleteModal<?= $row['id'] ?>" tabindex="-1"
+            role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        <p>Are you sure you want to delete this user?</p>
+                        <form action="../Verify/deleteuser.php" method="POST">
+                            <input type="hidden" name="id"
+                                value="<?= $row['id'] ?>">
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                            <button type="button" class="btn btn-secondary"
+                                data-dismiss="modal">Cancel</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

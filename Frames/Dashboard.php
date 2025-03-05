@@ -39,7 +39,7 @@ include('../Verify/fetchbusiness.php');
         body p{
             font-family: 'Roboto', san-serif;
         }
-        body h1{
+        body h2{
             font-family: 'Analogue', san-serif;
         }
         body a{
@@ -68,15 +68,19 @@ include('../Verify/fetchbusiness.php');
             overflow-x: hidden;
             scrollbar-width: none;
         }
+        #BusinessImg {
+            height: 100%;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
     <div class="container-fluid d-flex p-0">
         <!-- Sidebar -->
         <div class="sidebar col-md-2 col-lg-2 d-flex flex-column text-center" style="background-color: #405751;">
-            <h2>PROFILE</h2>
+            <h5><?php echo $_SESSION['email'] ?></h5>
             <a href="../frames/Homepage.php">Home</a>
-            <a href="#">Profile</a>
+            <a href="Dashboard.php">Profile</a>
             <a href="#">Settings</a>
             <a href="../Verify/Logout.php">Logout</a>
         </div>
@@ -104,10 +108,13 @@ include('../Verify/fetchbusiness.php');
                         <div class="p-3">
                             <h3>Recently Visited</h3>
                             <div class="container-fluid">
-                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25"id="RecentlyListed">
+                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25 justify-content-center"id="RecentlyListed">
                                     <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                        <a href="Dashboard.php" class="text-decoration-none text-dark w-50 m-5">
+                                        <a href="business_details.php?id=<?= $row['id'] ?>" class="text-decoration-none text-dark w-50 m-5">
                                             <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
+                                                <div class="container-fluid d-flex justify-content-center">
+                                                    <img src="../Resources/BusinessImg/<?= $row['image_path'] ?>" alt="Business image" id="BusinessImg">
+                                                </div>
                                                 <h1><?= $row['name'] ?></h1>
                                                 <p><?= $row['description'] ?></p>
                                                 <p><?= $row['location'] ?></p>

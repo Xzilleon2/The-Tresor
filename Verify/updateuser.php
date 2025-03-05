@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     mysqli_stmt_close($stmt);
 
     // Redirect back to the dashboard or the users list page
-    header('Location: ../Frames/Dashboard.php');
+    header('Location: ../Frames/adminDashboard.php');
     exit();
 }
 ?>

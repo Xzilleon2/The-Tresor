@@ -86,7 +86,7 @@ if($_SESSION['role'] != "admin"){
                                             required>
                                     </div>
                                     <div class="form-group">
-                                        <label for="usr_contactNum">Role</label>
+                                        <label for="role">Role</label>
                                         <input type="text" class="form-control" id="role"
                                             name="role" value="<?= $row['role'] ?>"
                                             required>

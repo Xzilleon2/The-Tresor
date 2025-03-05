@@ -35,6 +35,10 @@ if (!isset($_SESSION['email'])) {
         body a:hover{
             text-decoration: underline;
         }
+        #BusinessImg {
+            height: 100%;
+            width: 100%;
+        }
     </style>
 
 </head>
@@ -80,8 +84,11 @@ if (!isset($_SESSION['email'])) {
         <div class="container-fluid h-75" style="width: 100%;">
             <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25">
                 <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                    <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-25">
+                    <a href="business_details.php?id=<?= $row['id'] ?>" class="text-decoration-none text-dark m-5 w-25">
                         <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-lg">
+                            <div class="container-fluid d-flex justify-content-center">
+                                <img src="../Resources/BusinessImg/<?= $row['image_path'] ?>" alt="Business image" id="BusinessImg">
+                            </div>
                             <h1><?= $row['name'] ?></h1>
                             <p><?= $row['description'] ?></p>
                             <p><?= $row['location'] ?></p>

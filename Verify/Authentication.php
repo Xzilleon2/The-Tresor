@@ -30,15 +30,16 @@ if($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['login'])){
 
             if(password_verify($password, $row['password'])){
                 $_SESSION['email'] = $row['email'];
+                $_SESSION['id'] = $row['id'];
                 $_SESSION['role'] = $row['role'] ;
                 
-                if($_SESSION['role'] == "admin"){
+                if($_SESSION['role'] == 'admin'){
                     header('Location: Frames/adminDashboard.php');
                     exit();
-                } elseif($_SESSION['role'] == "owner"){ 
+                } elseif($_SESSION['role'] == 'owner'){ 
                     header('Location: Frames/BusinessDash.php');
                     exit();
-                } elseif($_SESSION['role'] == "user"){
+                } elseif($_SESSION['role'] == 'user'){
                     header('Location: Frames/Homepage.php');
                     exit();
                 } else {
