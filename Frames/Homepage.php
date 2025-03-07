@@ -35,6 +35,20 @@ if (!isset($_SESSION['email'])) {
         body a:hover{
             text-decoration: underline;
         }
+        #ListedContents{
+            max-height: 60vh;
+            overflow-y: auto;
+            overflow-x: hidden;
+            scrollbar-width: none;
+            display: block;
+        }
+        .card {
+            height: 100%;
+            min-height: 250px;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
         #BusinessImg {
             height: 100%;
             width: 100%;
@@ -80,24 +94,34 @@ if (!isset($_SESSION['email'])) {
         </div>
     </div>
     <!--Product Section-->
-    <div class="container-fluid d-flex align-items-center justify-content-center" style="height: 100vh;">
-        <div class="container-fluid h-75" style="width: 100%;">
-            <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25">
-                <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                    <a href="business_details.php?id=<?= $row['id'] ?>" class="text-decoration-none text-dark m-5 w-25">
-                        <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-lg">
-                            <div class="container-fluid d-flex justify-content-center">
-                                <img src="../Resources/BusinessImg/<?= $row['image_path'] ?>" alt="Business image" id="BusinessImg">
+    <div class="container">
+        <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 my-5 p-2 d-flex justify-content-center" id="ListedContents">
+            <?php while ($row = $result->fetch_assoc()) { ?>
+                <div class="col-lg-5 m-4">
+                    <a href="business_details.php?id=<?= htmlspecialchars($row['id']) ?>" 
+                    class="text-decoration-none text-dark">
+                        <div class="card border-dark p-3 shadow-md w-100">
+                            <div class="row">
+                                <!-- Text Column -->
+                                <div class="col-lg-7 d-flex flex-column">
+                                    <h1><?= htmlspecialchars($row['name']) ?></h1>
+                                    <p><?= htmlspecialchars($row['description']) ?></p>
+                                    <p><?= htmlspecialchars($row['location']) ?></p>
+                                </div>
+
+                                <!-- Image Column -->
+                                <div class="col-lg p-0 mx-2 d-flex justify-content-center align-items-center">
+                                    <img src="../Resources/BusinessImg/<?= htmlspecialchars($row['image_path'] ?? 'default.png') ?>" 
+                                        alt="Business image" class="img-fluid">
+                                </div>
                             </div>
-                            <h1><?= $row['name'] ?></h1>
-                            <p><?= $row['description'] ?></p>
-                            <p><?= $row['location'] ?></p>
                         </div>
                     </a>
-                <?php } ?>
-            </div>
+                </div>
+            <?php } ?>
         </div>
-    </div>
+    </div> 
+
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

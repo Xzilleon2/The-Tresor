@@ -6,8 +6,16 @@ if (!isset($_SESSION["email"]) && !isset($_SESSION["password"])){
     exit();
 }
 if($_SESSION['role'] != 'owner'){
-    header("Location: Homepage.php"); // Redirect to login if session is empty
-    exit();
+    if($_SESSION['role'] == 'user'){
+        header("Location: Dashboard.php");
+        exit();
+    }elseif($_SESSION['role'] == 'admin'){
+        header("Location: adminDashboard.php");
+        exit();
+    }else{
+        header("Location: Homepage.php");
+        exit();
+    }
 }
 
 include('../Connection/db_connect.php');
@@ -29,7 +37,7 @@ include('../Verify/fetchbusiness.php');
             background-size: cover;
             position: relative;
             width: 100%;
-            height: 35vh; /* Make banner full height */
+            height: 30vh; /* Make banner full height */
         }
         body {
             margin: 0;
@@ -193,7 +201,7 @@ include('../Verify/fetchbusiness.php');
                                 <label for="image">Image</label>
                                 <input type="file" class="form-control" id="image" name="image" required> <br>
                             </div>
-                            <input type="hidden" name="id" value="<?= $_SESSION['id'] ?>">
+                            <input type="hidden" name="id">
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
                     </div>
@@ -202,7 +210,7 @@ include('../Verify/fetchbusiness.php');
         </div>
 
         <!-- Delete Modal -->
-        <div class="modal fade" id="deleteModal<?= $row['id'] ?>" tabindex="-1"
+        <div class="modal fade" id="deleteModal" tabindex="-1"
             role="dialog" aria-labelledby="deleteModalLabel" aria-hidden="true">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
@@ -215,12 +223,11 @@ include('../Verify/fetchbusiness.php');
                     </div>
                     <div class="modal-body">
                         <p>Are you sure you want to delete this user?</p>
-                        <form action="../Verify/deleteuser.php" method="POST">
-                            <input type="hidden" name="id"
-                                value="<?= $row['id'] ?>">
+                        <form action="../Verify/deletelisting.php" method="POST">
+                            <label for="name">Listed Business Name</label>
+                            <input type="text" name="name">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($_SESSION['id']) ?>"">
                             <button type="submit" class="btn btn-danger">Delete</button>
-                            <button type="button" class="btn btn-secondary"
-                                data-dismiss="modal">Cancel</button>
                         </form>
                     </div>
                 </div>

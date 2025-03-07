@@ -8,9 +8,17 @@ if (!isset($_SESSION['email']) && !isset($_SESSION['password'])) {
     header("Location: ../index.php");
     exit();
 }
-if($_SESSION['role'] != "admin"){
-    header("Location: Homepage.php");
-    exit();
+if($_SESSION['role'] != 'admin'){
+    if($_SESSION['role'] == 'owner'){
+        header("Location: BusinessDash.php");
+        exit();
+    }elseif($_SESSION['role'] == 'user'){
+        header("Location: Dashboard.php");
+        exit();
+    }else{
+        header("Location: Homepage.php");
+        exit();
+    }
 }
 ?>
 

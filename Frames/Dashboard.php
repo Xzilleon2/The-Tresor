@@ -6,8 +6,16 @@ if (!isset($_SESSION["email"])){
     exit();
 }
 if($_SESSION['role'] != 'user'){
-    header("Location: Homepage.php"); 
-    exit();
+    if($_SESSION['role'] == 'owner'){
+        header("Location: BusinessDash.php");
+        exit();
+    }elseif($_SESSION['role'] == 'admin'){
+        header("Location: adminDashboard.php");
+        exit();
+    }else{
+        header("Location: Homepage.php");
+        exit();
+    }
 }
 
 include('../Connection/db_connect.php');
