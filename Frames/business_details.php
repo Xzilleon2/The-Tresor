@@ -1,5 +1,6 @@
 <?php 
 include ("../Connection/db_connect.php");
+include ("../Verify/booking_process.php");
 
 // Check if `id` is provided in the URL
 if (isset($_GET['id'])) {
@@ -76,18 +77,50 @@ if (isset($_GET['id'])) {
                             <a href="../Verify/Logout.php">Logout</a>
                         </div>
                     </div>
+
                     <div class="col-lg-10 bg-success">
                         <h1><?= $row['name'] ?></h1>
                         <img src="../Resources/BusinessImg/<?= $row['image_path'] ?? 'default.jpg' ?>" alt="Business Image" style="width:300px; height:auto;">
                         <p><strong>Description:</strong> <?= $row['description'] ?></p>
                         <p><strong>Location:</strong> <?= $row['location'] ?></p>
+
+                        <!--Add Button-->
+                        <button class="btn btn-light btn-sm my-2 w-25" data-bs-toggle="modal"
+                        data-bs-target="#bookModal">Book</button> <br>
                     </div>
                 </div>
             </div>
 
-
-
-
+            <!-- Booking Modal -->
+            <div class="modal fade" id="bookModal" tabindex="-1"
+                role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="bookModalLabel">Reservation Details</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form action="../Verify/booking_process.php" method="POST">
+                                <div class="form-group">
+                                    <input type="hidden" class="form-control" id="business_id"
+                                        name="business_id" value="<?= $row['id'] ?>" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="booking_date">Date</label>
+                                    <input type="text" class="form-control" id="booking_date"
+                                        name="booking_date" required> <br>
+                                </div>
+                                <button type="submit" class="btn btn-primary">Save
+                                    Changes</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
             <!-- Bootstrap Script -->
             <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

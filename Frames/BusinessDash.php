@@ -1,7 +1,7 @@
 <?php 
 session_start();
 
-if (!isset($_SESSION["email"]) && !isset($_SESSION["passowrd"])){
+if (!isset($_SESSION["email"]) && !isset($_SESSION["password"])){
     header("Location:../index.php");
     exit();
 }
@@ -66,7 +66,7 @@ include('../Verify/fetchbusiness.php');
             max-height: 350px; /* Adjust height as needed */
             overflow-y: auto;
             overflow-x: hidden;
-            scrollbar-width: none;
+            scrollbar-width: thin;
         }
         #BusinessImg {
             height: 100%;
@@ -108,19 +108,34 @@ include('../Verify/fetchbusiness.php');
                         <div class="p-3">
                             <h3>Recently Listed</h3>
                             <div class="container-fluid">
-                                <div class="d-flex flex-wrap gap-2 bg-dark bg-opacity-25" id="RecentlyListed">
-                                    <?php while($row = mysqli_fetch_assoc($result)) { ?>
-                                        <a href="Dashboard.php" class="text-decoration-none text-dark m-5 w-50">
-                                            <div class="card d-flex flex-column justify-content-center border border-dark p-3 shadow-md">
-                                                <div class="container-fluid d-flex justify-content-center">
-                                                    <img src="../Resources/BusinessImg/<?= $row['image_path'] ?>" alt="Business image" id="BusinessImg">
+                                <div class="d-flex flex-wrap" id="RecentlyListed">
+                                <?php if (isset($result) && $result->num_rows > 0) { ?>
+                                    <?php while ($row = $result->fetch_assoc()) { ?>
+                                        <a href="business_details.php?id=<?= htmlspecialchars($row['id']) ?>
+                                          " class="text-decoration-none text-dark w-75 m-5">
+
+                                            <div class="card d-flex flex-column justify-content-center border-dark p-3 shadow-md">
+                                                <div class="row">
+                                                    <div class="col-lg-7 ">
+                                                        <h1><?= htmlspecialchars($row['name']) ?></h1>
+                                                        <p><?= htmlspecialchars($row['description']) ?></p>
+                                                        <p><?= htmlspecialchars($row['location']) ?></p>
+                                                    </div>
+
+                                                    <!--Image Column-->
+                                                    <div class="col-lg p-0 mx-2 d-flex justify-content-center">
+                                                        <div class="container-fluid p-0">
+                                                            <img src="../Resources/BusinessImg/<?= htmlspecialchars($row['image_path'] ?? 'default.png') ?>" 
+                                                                alt="Business image" id="BusinessImg">
+                                                        </div>
+                                                    </div>
                                                 </div>
-                                                <h1><?= $row['name'] ?></h1>
-                                                <p><?= $row['description'] ?></p>
-                                                <p><?= $row['location'] ?></p>
                                             </div>
                                         </a>
                                     <?php } ?>
+                                <?php } else { ?>
+                                    <p>No recent bookings found.</p>
+                                <?php } ?>
                                 </div>
                             </div>
                         </div>
