@@ -24,6 +24,7 @@ if (!isset($_SESSION['email'])) {
         }
         body p{
             font-family: 'Roboto', san-serif;
+            text-align: justify;
         }
         body h1{
             font-family: 'Analogue', san-serif;
@@ -112,7 +113,7 @@ if (!isset($_SESSION['email'])) {
                                 <!-- Image Column -->
                                 <div class="col-lg p-0 mx-2 d-flex justify-content-center align-items-center">
                                     <img src="../Resources/BusinessImg/<?= htmlspecialchars($row['image_path'] ?? 'default.png') ?>" 
-                                        alt="Business image" class="img-fluid">
+                                        alt="Business image" class="img-fluid h-100">
                                 </div>
                             </div>
                         </div>
