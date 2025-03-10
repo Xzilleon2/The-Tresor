@@ -122,18 +122,16 @@ include('../Verify/bookingNotif.php');
                                 <div class="d-flex flex-wrap" id="RecentlyListed">
                                 <?php if (isset($result) && $result->num_rows > 0) { ?>
                                     <?php while ($row = $result->fetch_assoc()) { ?>
-                                        <a href="business_details.php?id=<?= htmlspecialchars($row['id']) ?>
-                                          " class="text-decoration-none text-dark w-75 m-5">
-
+                                        <a href="business_details.php?id=<?= htmlspecialchars($row['id']) ?>" 
+                                        class="text-decoration-none text-dark w-75 m-5">
                                             <div class="card d-flex flex-column justify-content-center border-dark p-3 shadow-md">
                                                 <div class="row">
                                                     <div class="col-lg-7 ">
                                                         <h1><?= htmlspecialchars($row['name']) ?></h1>
                                                         <p><?= htmlspecialchars($row['description']) ?></p>
                                                         <p><?= htmlspecialchars($row['location']) ?></p>
-                                                    </div>
 
-                                                    <!--Image Column-->
+                                                    </div>
                                                     <div class="col-lg p-0 mx-2 d-flex justify-content-center">
                                                         <div class="container-fluid p-0">
                                                             <img src="../Resources/BusinessImg/<?= htmlspecialchars($row['image_path'] ?? 'default.png') ?>" 
@@ -143,7 +141,53 @@ include('../Verify/bookingNotif.php');
                                                 </div>
                                             </div>
                                         </a>
+
+                                        <!-- Update Button -->
+                                        <button class="btn btn-sm mt-2 text-light" data-bs-toggle="modal" 
+                                        data-bs-target="#updateModal<?= $row['id'] ?>"
+                                        style="background-color: #405751;">Update</button>
+
+                                        <!-- Update Listing Modal -->
+                                        <div class="modal fade" id="updateModal<?= $row['id'] ?>" tabindex="-1" role="dialog" 
+                                            aria-labelledby="updateModalLabel<?= $row['id'] ?>" aria-hidden="true">
+                                            <div class="modal-dialog" role="document">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="updateModalLabel<?= $row['id'] ?>">Update Listing</h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form action="../Verify/updateListing.php" method="POST" enctype="multipart/form-data">
+                                                            <input type="hidden" name="business_id" value="<?= $row['id'] ?>">
+
+                                                            <div class="form-group">
+                                                                <label for="name">Name</label>
+                                                                <input type="text" class="form-control" name="name" value="<?= htmlspecialchars($row['name']) ?>" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="description">Description</label>
+                                                                <input type="text" class="form-control" name="description" value="<?= htmlspecialchars($row['description']) ?>" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="location">Location</label>
+                                                                <input type="text" class="form-control" name="location" value="<?= htmlspecialchars($row['location']) ?>" required>
+                                                            </div>
+
+                                                            <div class="form-group">
+                                                                <label for="image">Image</label>
+                                                                <input type="file" class="form-control" name="image">
+                                                            </div>
+
+                                                            <button type="submit" class="btn btn-primary mt-3">Save Changes</button>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     <?php } ?>
+
                                 <?php } else { ?>
                                     <p>No recent bookings found.</p>
                                 <?php } ?>
@@ -159,9 +203,6 @@ include('../Verify/bookingNotif.php');
                         <!--Add Button-->
                         <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
                         data-bs-target="#addModal">List Business</button> <br>
-                        <!--Update Button-->
-                        <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
-                        data-bs-target="#updateModal">Update Listed</button> <br>
                         <!--Delete Button-->
                         <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
                         data-bs-target="#deleteModal">Delete Listed</button></li>
@@ -203,44 +244,7 @@ include('../Verify/bookingNotif.php');
                                 <label for="image">Image</label>
                                 <input type="file" class="form-control" id="image" name="image" required> <br>
                             </div>
-                            <input type="hidden" name="id">
-                            <button type="submit" class="btn btn-primary">Save Changes</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Update Listing Modal -->
-        <div class="modal fade" id="updateModal" tabindex="-1" role="dialog" aria-labelledby="updateModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="updateModalLabel">Update Listing</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form action="../Verify/updateListing.php" method="POST">
-                        <div class="form-group">
-                                <label for="name">Name</label>
-                                <input type="text" class="form-control" id="name"
-                                    name="name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="description">Description</label>
-                                <input type="text" class="form-control" id="description"
-                                    name="description" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="location">Location</label>
-                                <input type="text" class="form-control" id="location"
-                                    name="location" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="image">Image</label>
-                                <input type="file" class="form-control" id="image" name="image" required> <br>
-                            </div>
-                            <input type="hidden" name="id">
+                            <input type="hidden" name="id" value="<?php echo $_SESSION['id'];?>">
                             <button type="submit" class="btn btn-primary">Save Changes</button>
                         </form>
                     </div>
@@ -331,8 +335,9 @@ include('../Verify/bookingNotif.php');
             </div>
         </div>
 
-        
+    
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 </body>
 </html>

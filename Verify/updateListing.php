@@ -1,54 +1,64 @@
 <?php
-include("../Connection/db_connect.php");
+session_start();
+include "../Connection/db_connect.php";
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $id = $_POST['id'];
-    $name = $_POST['name'];
-    $description = $_POST['description'];
-    $location = $_POST['location'];
+// Check if the form is submitted
+if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['business_id'])) {
+    $id = intval($_POST['business_id']); // Convert ID to integer
+    $name = mysqli_real_escape_string($conn, $_POST['name']);
+    $description = mysqli_real_escape_string($conn, $_POST['description']);
+    $location = mysqli_real_escape_string($conn, $_POST['location']);
+    
+    // Handle image upload
+    $image_path = null;
+    if (!empty($_FILES['image']['name'])) {
+        $target_dir = "../Resources/BusinessImg/";
+        $image_name = basename($_FILES["image"]["name"]);
+        $target_file = $target_dir . $image_name;
 
-    // Update the `businesses` table
-    $query = "UPDATE businesses SET name = ?, description = ?, location = ? WHERE owner_id = ? ";
-    $stmt = $conn->prepare($query);
-    $stmt->bind_param("sssi", $name, $description, $location, $id);
-
-    if ($stmt->execute()) {
-        $business_id = $stmt->insert_id; // Get the last inserted ID
-
-        //Check if a file is being uploaded or got existing file
-        if (!empty($_FILES['image']['name'])) {
-            $target_dir = "../Resources/BusinessImg/";
-            $file_name = basename($_FILES["image"]["name"]);
-            $target_file = $target_dir . $file_name;
-            $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
-        
-            if (in_array($imageFileType, ["jpg", "jpeg", "png"])) {
-                if (move_uploaded_file($_FILES['image']["tmp_name"], $target_file)) {
-                    $Business_image =  $file_name;
-
-                    //Upload the Image to Database
-                    $Query = "UPDATE business_images SET image_path = ? WHERE business_id = ? ";
-                    $img_stmt = $conn->prepare($Query);
-                    $img_stmt->bind_param("si", $business_id, $Business_image);
-                    $img_stmt->execute();
-
-                } else {
-                    echo "<script>alert('Error in Uploading')</script>";
-                }
-            } else {
-                echo "<script>alert('Not Supported Type')</script>";
-            }
+        // Move uploaded file
+        if (move_uploaded_file($_FILES["image"]["tmp_name"], $target_file)) {
+            $image_path = $image_name;
         } else {
-            // If no image is uploaded, keep the existing one or set a default image
-            $Business_image = "../Resources/BusinessImg/images.png"; 
+            $_SESSION['message'] = "Error uploading image.";
+            $_SESSION['message_type'] = "danger";
+            header("Location: ../Frames/BusinessDash.php");
+            exit();
         }
-
-        echo "<script>alert('Listed Successfully');</script>";
-        header('Location: ../Frames/BusinessDash.php');
-        exit();
-        
-    } else {
-        echo "Error: " . $stmt->error;
     }
+
+    // SQL query to update listing
+    if ($image_path) {
+        $query = "UPDATE businesses SET name=?, description=?, location=?, image_path=? WHERE id=?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "ssssi", $name, $description, $location, $image_path, $id);
+    } else {
+        $query = "UPDATE businesses SET name=?, description=?, location=? WHERE id=?";
+        $stmt = mysqli_prepare($conn, $query);
+        mysqli_stmt_bind_param($stmt, "sssi", $name, $description, $location, $id);
+    }
+
+    // Execute query and handle errors
+    if (mysqli_stmt_execute($stmt)) {
+        $_SESSION['message'] = "Business listing updated successfully.";
+        $_SESSION['message_type'] = "success";
+    } else {
+        $_SESSION['message'] = "Error updating listing: " . mysqli_error($conn);
+        $_SESSION['message_type'] = "danger";
+    }
+
+    // Close connections
+    mysqli_stmt_close($stmt);
+    mysqli_close($conn);
+
+    // Redirect
+    header("Location: ../Frames/BusinessDash.php");
+    exit();
 }
+
+// Invalid access
+$_SESSION['message'] = "Invalid request.";
+$_SESSION['message_type'] = "danger";
+header("Location: ../Frames/BusinessDash.php");
+exit();
 ?>
