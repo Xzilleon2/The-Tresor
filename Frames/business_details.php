@@ -100,7 +100,6 @@ if (isset($_GET['id'])) {
                             <h5 class="modal-title" id="bookModalLabel">Reservation Details</h5>
                             <button type="button" class="btn-close" data-bs-dismiss="modal"
                                 aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
                             </button>
                         </div>
                         <div class="modal-body">
@@ -111,7 +110,7 @@ if (isset($_GET['id'])) {
                                 </div>
                                 <div class="form-group">
                                     <label for="booking_date">Date</label>
-                                    <input type="text" class="form-control" id="booking_date"
+                                    <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_date"
                                         name="booking_date" required> <br>
                                 </div>
                                 <button type="submit" class="btn btn-primary">Save

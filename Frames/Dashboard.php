@@ -100,8 +100,7 @@ include('../Verify/recentlybooked.php');
                     <div class="row-lg-10 m-0 w-100">
                         <div class="d-flex justify-content-end w-100 p-3 shadow-sm" id="banner">
                             <div class="row-lg-8 w-25 h-25 d-flex align-items-center">
-                                <input class="border-light text-light px-3 rounded-pill bg-transparent h-75 w-100"
-                                type="text" name="search" placeholder="search">
+                                <?php include('../includes/displayMessage.php'); ?>
                             </div>
                         </div>
                     </div>
