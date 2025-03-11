@@ -7,18 +7,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Retrieve form data from POST request
     $business_id = $_POST['business_id'];
     $user_id = $_SESSION['id']; // Get the logged-in user's ID from the session
-    $booking_date = $_POST['booking_date'];
+    $persons = $_POST['booking_people'];
+    $checkIn_date = $_POST['booking_startdate'];
+    $checkOut_date = $_POST['booking_enddate'];
     $booking_status = "Pending"; // Default status for a new booking
 
     // Convert the date to MySQL's YYYY-MM-DD format to ensure proper storage
-    $formatted_date = date('Y-m-d', strtotime($booking_date));
+    $formatted_checkindate = date('Y-m-d', strtotime($checkIn_date));
+    $formatted_checkoutdate = date('Y-m-d', strtotime($checkOut_date));
 
     // Prepare an SQL query to insert the booking details into the database
-    $query = "INSERT INTO bookings (user_id, business_id, booking_date, status) VALUES (?, ?, ?, ?)";
+    $query = "INSERT INTO bookings (user_id, business_id, booking_date, CheckOut_Date, Persons, status) VALUES (?, ?, ?, ?, ?, ?)";
     $stmt = $conn->prepare($query);
 
     if ($stmt) { // Check if the statement was prepared successfully
-        $stmt->bind_param("iiss", $user_id, $business_id, $formatted_date, $booking_status); // Bind parameters to prevent SQL injection
+        $stmt->bind_param("iissss", $user_id, $business_id, $formatted_checkindate,
+                          $formatted_checkoutdate, $persons, $booking_status); // Bind parameters to prevent SQL injection
 
         // Execute the prepared statement
         if ($stmt->execute()) {

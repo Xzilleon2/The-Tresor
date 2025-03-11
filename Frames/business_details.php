@@ -73,15 +73,23 @@ if (isset($_GET['id'])) {
                         <?php include('../includes/sidebar.php');?>
                     </div>
 
-                    <div class="col-lg-10 bg-success">
-                        <h1><?= $row['name'] ?></h1>
-                        <img src="../Resources/BusinessImg/<?= $row['image_path'] ?? 'default.jpg' ?>" alt="Business Image" style="width:300px; height:auto;">
-                        <p><strong>Description:</strong> <?= $row['description'] ?></p>
-                        <p><strong>Location:</strong> <?= $row['location'] ?></p>
-
-                        <!--Add Button-->
-                        <button class="btn btn-light btn-sm my-2 w-25" data-bs-toggle="modal"
-                        data-bs-target="#bookModal">Book</button> <br>
+                    <!-- Content design for the main panel -->
+                    <div class="col-lg-10 d-flex flex-column">
+                        <div class="row-lg d-flex justify-content-center p-3 m-3">
+                            <img src="../Resources/BusinessImg/<?= $row['image_path'] ?? 'default.jpg' ?>"
+                            alt="Business Image" style="width:300px; height:auto;">
+                        </div>
+                        <!-- Business Details -->
+                        <div class="row-lg d-flex justify-content-center w-75">
+                            <div class="col-lg text-dark m-3 p-3" style="background-color: #405751;">
+                                    <h1><?= $row['name'] ?></h1>
+                                    <p><strong>Description:</strong> <?= $row['description'] ?></p>
+                                    <p><strong>Location:</strong> <?= $row['location'] ?></p>
+                                    <!--Add Button-->
+                                    <button class="btn btn-dark text-light btn-sm my-2 w-25" data-bs-toggle="modal"
+                                    data-bs-target="#bookModal">Book</button> <br>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -104,15 +112,17 @@ if (isset($_GET['id'])) {
                                         name="business_id" value="<?= $row['id'] ?>" required>
                                 </div>
                                 <div class="form-group">
-                                    <label for="booking_date">Date</label>
-                                    <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_date"
-                                        name="booking_date" required> <br>
-                                    <label for="booking_date">Date</label>
-                                    <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_date"
-                                        name="booking_date" required> <br>
+                                    <label for="booking_people">Number of Persons</label>
+                                    <input class="form-control" type="text" id="booking_people"
+                                        name="booking_people" required> <br>
+                                    <label for="booking_startdate">Check-In Date</label>
+                                    <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_startdate"
+                                        name="booking_startdate" required> <br>
+                                        <label for="booking_enddate">Check-Out Date</label>
+                                    <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_enddate"
+                                        name="booking_enddate" required> <br>
                                 </div>
-                                <button type="submit" class="btn btn-primary">Save
-                                    Changes</button>
+                                <button type="submit" class="btn btn-primary">Book</button>
                             </form>
                         </div>
                     </div>

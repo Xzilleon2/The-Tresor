@@ -7,7 +7,9 @@ $query = "SELECT
             bs.id AS business_id, 
             bs.name AS business_name, 
             u.email AS user_email, 
-            b.booking_date AS booking_date, 
+            b.booking_date AS booking_checkIn, 
+            b.CheckOut_Date AS booking_checkOut,
+            b.Persons AS booking_persons,
             b.status AS booking_status
           FROM bookings b
           JOIN businesses bs ON b.business_id = bs.id

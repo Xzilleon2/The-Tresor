@@ -90,12 +90,7 @@ include('../Verify/bookingNotif.php');
 <body>
     <div class="container-fluid d-flex p-0">
         <!-- Sidebar -->
-        <div class="sidebar col-md-2 col-lg-2 d-flex flex-column text-center" style="background-color: #405751;">
-            <h2>PROFILE</h2>
-            <a href="../frames/Homepage.php">Home</a>
-            <a href="#">Profile</a>
-            <a href="../Verify/Logout.php">Logout</a>
-        </div>
+        <?php include('../includes/sidebar.php');?>
 
         <div class="col">
             <!-- Main Content -->
@@ -274,9 +269,10 @@ include('../Verify/bookingNotif.php');
         </div>
 
         <!-- Notification Modal -->
+        <!-- Used to review the bookings of customers -->
         <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" 
         aria-hidden="true">
-            <div class="modal-dialog modal-lg">
+            <div class="modal-dialog modal-xl">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="notificationModalLabel">Recent Bookings</h5>
@@ -290,7 +286,9 @@ include('../Verify/bookingNotif.php');
                                     <tr>
                                         <th>TITLE</th>
                                         <th>EMAIL</th>
-                                        <th>BOOKING DATE</th>
+                                        <th>CHECK-IN DATE</th>
+                                        <th>CHECK-OUT DATE</th>
+                                        <th>#PERSONS</th>
                                         <th>STATUS</th>
                                         <th>ACTION</th>
                                     </tr>
@@ -301,7 +299,9 @@ include('../Verify/bookingNotif.php');
                                         <tr>
                                             <td><?= htmlspecialchars($row['business_name']) ?></td>
                                             <td><?= htmlspecialchars($row['user_email']) ?></td>
-                                            <td><?= htmlspecialchars($row['booking_date']) ?></td>
+                                            <td><?= htmlspecialchars($row['booking_checkIn']) ?></td>
+                                            <td><?= htmlspecialchars($row['booking_checkOut']) ?></td>
+                                            <td><?= htmlspecialchars($row['booking_persons']) ?></td>
                                             <td>
                                                 <span class="badge bg-<?= $row['booking_status'] == 'Approved' ? 'success' :
                                                 ($row['booking_status'] == 'Rejected' ? 'danger' : 'warning') ?>">
