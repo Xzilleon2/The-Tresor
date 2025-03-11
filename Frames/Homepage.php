@@ -18,6 +18,7 @@ if (!isset($_SESSION['email'])) {
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" 
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <style>
         body{
             background: url(../Resources/Back.jpg) cover;
@@ -54,46 +55,29 @@ if (!isset($_SESSION['email'])) {
             height: 100%;
             width: 100%;
         }
+        #Banner {
+            background: url('../Resources/Heavens.jpg') no-repeat center center;
+            background-size: cover;
+            position: relative;
+            height: 350px;
+
+        }
     </style>
 
 </head>
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light d-flex justify-content-center" style="background-color: #405751;">
-        <div class="container p-0 m-0">
-            <!-- Brand and Toggler -->
-            <a class="navbar-brand text-dark" href="#">
-                <img src="../Resources/Tresor.png" alt="" style="height: 70px; width: 80px;">
-            </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-
-            <!-- Collapsible Menu -->
-            <div class="collapse navbar-collapse d-flex text-center" id="navbarNav">
-                <ul class="navbar-nav mx-auto text-center px-5">
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">Home</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
-                </ul> 
-                <ul class="navbar-nav">
-                    <li class="nav-item"><a class="nav-link text-white text-decoration-none"
-                    href="Dashboard.php"><?php echo $_SESSION['email'] ?></a></li> <br>
-                </ul>
-            </div>
-        </div>
-    </nav>
-    <!--Icons and search Panels-->
-    <div class="container-fluid">
-        <div class="row my-4">
-            <div class="container-fluid d-flex justify-content-end">
-                <form action="">
-                    <input class="form-control border-dark rounded-pill text-dark px-4" type="text" name="search" placeholder="Search">
-                </form>
-            </div>
+    <?php include('../includes/navbar.php')?>
+    <div class="container-fluid text-light border-dark d-flex flex-column justify-content-center align-items-center" id="Banner">
+        <h1>Discover Serinity <br> Away From Home</h1>
+        <p class="m-2">Sunrises and sunsets are simply beautiful. Enjoy them while you’re on vacation!</p>
+        <div class="container d-flex justify-content-center mt-5">
+            <a href="Dashboard.php" class="btn btn-md mx-2 text-dark bg-light text-decoration-none"> Popular Destinations </a>
+            <a href="Dashboard.php" class="btn btn-md mx-2 text-dark bg-light text-decoration-none"> Most Viewed </a>
+            <a href="Dashboard.php" class="btn btn-md mx-2 text-dark bg-light text-decoration-none"> Recently Discovered </a>
         </div>
     </div>
+
     <!--Product Section-->
     <div class="container">
         <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 my-5 p-2 d-flex justify-content-center" id="ListedContents">
