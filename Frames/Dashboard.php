@@ -122,7 +122,9 @@ include('../Verify/recentlybooked.php');
                                                         <h1><?= htmlspecialchars($row['business_name']) ?></h1>
                                                         <p><?= htmlspecialchars($row['description']) ?></p>
                                                         <p><?= htmlspecialchars($row['location']) ?></p>
-                                                        <p><strong>Booking Date:</strong> <?= htmlspecialchars($row['booking_date']) ?></p>
+                                                        <p><strong>CheckIn Date:</strong> <?= htmlspecialchars($row['booking_date']) ?></p>
+                                                        <p><strong>CheckOut Date:</strong> <?= htmlspecialchars($row['CheckOut_Date']) ?></p>
+                                                        <p><strong>Number of Persons:</strong> <?= htmlspecialchars($row['Persons']) ?></p>
                                                         <p><strong>Status:</strong> <?= htmlspecialchars($row['status']) ?></p>
                                                     </div>
 

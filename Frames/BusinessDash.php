@@ -252,11 +252,11 @@ include('../Verify/bookingNotif.php');
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="deleteModalLabel">Delete User</h5>
+                        <h5 class="modal-title" id="deleteModalLabel">Delete listing</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
                     <div class="modal-body">
-                        <p>Are you sure you want to delete this user?</p>
+                        <p>Are you sure you want to delete this listing?</p>
                         <form action="../Verify/deletelisting.php" method="POST">
                             <label for="name">Listed Business Name</label>
                             <input type="text" name="name">
