@@ -63,7 +63,6 @@ include('../Verify/recentlybooked.php');
         .sidebar a {
             color: white;
             text-decoration: none;
-            font-size: 20px;
             display: block;
             padding: 10px 0;
         }

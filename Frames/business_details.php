@@ -70,13 +70,7 @@ if (isset($_GET['id'])) {
                 <div class="row h-100">
                     <div class="col-lg-2 d-flex flex-column vh-100 p-0">
                         <!-- Sidebar -->
-                        <div class="sidebar d-flex flex-column text-center" style="background-color: #405751;">
-                            <h2>The Tresor</h2> <br>
-                            <a href="../frames/Homepage.php">Home</a>
-                            <a href="Dashboard.php">Profile</a>
-                            <a href="#">Settings</a>
-                            <a href="../Verify/Logout.php">Logout</a>
-                        </div>
+                        <?php include('../includes/sidebar.php');?>
                     </div>
 
                     <div class="col-lg-10 bg-success">
@@ -110,6 +104,9 @@ if (isset($_GET['id'])) {
                                         name="business_id" value="<?= $row['id'] ?>" required>
                                 </div>
                                 <div class="form-group">
+                                    <label for="booking_date">Date</label>
+                                    <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_date"
+                                        name="booking_date" required> <br>
                                     <label for="booking_date">Date</label>
                                     <input class="form-control" type="date"  min="2025-01-01" max="2025-12-31" id="booking_date"
                                         name="booking_date" required> <br>
