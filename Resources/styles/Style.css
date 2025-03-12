@@ -11,9 +11,11 @@
     font-weight: normal;
     font-style: normal;
 }
+
+/* Landing Design*/
 #banner {
     position: relative;
-    height: 600px;
+    height: 700px;
     background: url('../Banner.png') no-repeat center center;
     background-size: cover;
     background-blend-mode: darken;
@@ -115,6 +117,9 @@ body a:hover{
 #stayscan{
     color: #91bdff;
 }
+#signinbtn{
+    background-color: #04234e;
+}
 .card{
     border: solid 2px #91bdff;
     border-radius: 30px;
@@ -130,4 +135,19 @@ input:focus {
     border: none;
     border-bottom: solid 1px white;
     outline: none;
+}
+
+/* Login Modal Design*/
+#modalcontainer {
+    background-color: #05224b;
+    color: white;
+}
+#modalcontainer > a{
+    color: white;
+}
+#modalcontainer input{
+    border: none;
+    border-radius: 5px;
+    background-color: #0d3772;
+    color: white;
 }

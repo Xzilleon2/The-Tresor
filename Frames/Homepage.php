@@ -21,7 +21,7 @@ if (!isset($_SESSION['email'])) {
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
     <style>
         body{
-            background: url(../Resources/Back.jpg) cover;
+            background-color: #05152c;
         }
         body p{
             font-family: 'Roboto', san-serif;
@@ -56,7 +56,7 @@ if (!isset($_SESSION['email'])) {
             width: 100%;
         }
         #Banner {
-            background: url('../Resources/Heavens.jpg') no-repeat center center;
+            background: url('../Resources/banner.jpg') no-repeat center center;
             background-size: cover;
             position: relative;
             height: 350px;

@@ -35,7 +35,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
         <div class="container">
             <!-- logo -->
             <a class="navbar-brand text-light" href="#" id="Logo">
-                <h3>Stay <span id="stayscan">Scan</span></h3>
+                <h3>Stay<span id="stayscan">Scan</span></h3>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -50,8 +50,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
                 <!-- Login button -->
-                <button class="btn bg-transparent text-light btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#LoginVerify">Login</button>
+                <button class="btn text-light btn-outline-light" data-bs-toggle="modal"
+                data-bs-target="#LoginVerify" id="signinbtn">SIGN IN</button>
                 
             </div>
         </div>
@@ -83,7 +83,7 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
                             <h1 class="me-4">All ABOUT</h1>
                         </div>
                         <div class="container d-flex justify-content-center ps-5">
-                            <h1 class="me-4">STAY <h1 id="stayscan">SCAN</h1></h1>
+                            <h1 class="me-4">STAY<h1 id="stayscan">SCAN</h1></h1>
                         </div>
                     </div>
                     <div class="row">
