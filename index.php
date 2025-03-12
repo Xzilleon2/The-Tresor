@@ -62,8 +62,8 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     <div class="container-fluid d-flex flex-column align-items-center justify-content-center
      text-center text-light p-0 m-0" id="banner">
         <div class="container">
-            <h1 class="display-6 fw-bold m-3" id="discover">DISCOVER</h1>
-            <h1 class="display-1 fw-bold m-3" id="davao">DAVAO</h1>
+            <h1 class="display-6 fw-bold m-3" id="AboutContent">DISCOVER</h1>
+            <h1 class="display-1 fw-bold m-3" id="AboutContent">DAVAO</h1>
             <p class="fs-6 px-3 m-3">
                 Stayscan is your ultimate guide to discovering, <br>
                 comparing, and booking the finest local resorts in Davao<br>
