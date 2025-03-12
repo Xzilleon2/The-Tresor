@@ -22,7 +22,7 @@ if (isset($_GET['id'])) {
 ?>
         <!DOCTYPE html>
         <html lang="en">
-        <head>
+        <>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title><?= $row['name'] ?></title>
@@ -79,6 +79,7 @@ if (isset($_GET['id'])) {
                             <img src="../Resources/BusinessImg/<?= $row['image_path'] ?? 'default.jpg' ?>"
                             alt="Business Image" style="width:300px; height:auto;">
                         </div>
+
                         <!-- Business Details -->
                         <div class="row-lg d-flex justify-content-center w-75">
                             <div class="col-lg text-dark m-3 p-3" style="background-color: #405751;">

@@ -2,7 +2,7 @@
 include("Connection/db_connect.php");
 include("Verify/Login.php");
 
-// Check if user is logged in
+// Check if user is logged in and redirect to a frame base on the role
 if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     if($_SESSION['role'] == 'admin'){
         header("Location: Frames/adminDashboard.php");
@@ -27,38 +27,15 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        #banner {
-            background: url('Resources/Banner.png') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            height: 700px;
-        }
-        body{
-            background: url(Resources/Back.jpg) cover;
-        }
-        body p{
-            font-family: 'Roboto', san-serif;
-        }
-        body h1{
-            font-family: 'Analogue', san-serif;
-        }
-        body a{
-            text-decoration: none;
-            color: white;
-        }
-        body a:hover{
-            text-decoration: underline;
-        }
-    </style>
+    <link rel="stylesheet" href="./Resources/styles/Style.css">
 </head>
 <body>
     <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 fixed-top">
         <div class="container">
-            <!-- Brand and Toggler -->
-            <a class="navbar-brand text-dark" href="#">
-                <img src="Resources/Tresor.png" alt="" style="height: 80px; width: 100px;">
+            <!-- logo -->
+            <a class="navbar-brand text-light" href="#" id="Logo">
+                <h3>Stay <span id="stayscan">Scan</span></h3>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
                 <span class="navbar-toggler-icon"></span>
@@ -67,189 +44,145 @@ if (isset($_SESSION['email']) && isset($_SESSION['password'])) {
             <!-- Collapsible Menu -->
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav mx-auto text-center">
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Services">Services</a></li>
-                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#Rooms">Rooms</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Home</a></li>
+                    <li class="nav-item mx-2"><a class="nav-link text-white" href="#featured">Room</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
                     <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
                 </ul> 
-                <!-- BOOK NOW button -->
+                <!-- Login button -->
                 <button class="btn bg-transparent text-light btn-outline-light" data-bs-toggle="modal"
-                data-bs-target="#LoginVerify">BOOK NOW</button>
+                data-bs-target="#LoginVerify">Login</button>
                 
             </div>
         </div>
     </nav>
 
 
-    <!-- Banner Section -->
-    <div class="container-fluid d-flex flex-column align-items-center justify-content-center text-center text-light" id="banner">
+    <!-- Banner Section/ Image Cover -->
+    <div class="container-fluid d-flex flex-column align-items-center justify-content-center
+     text-center text-light p-0 m-0" id="banner">
         <div class="container">
-            <h1 class="display-4 fw-bold m-3" style="font-family: 'rosarivo', serif;">DISCOVER SERENITY<br>AWAY FROM HOME</h1>
+            <h1 class="display-6 fw-bold m-3" id="discover">DISCOVER</h1>
+            <h1 class="display-1 fw-bold m-3" id="davao">DAVAO</h1>
             <p class="fs-6 px-3 m-3">
-                Tresor is a smart platform that helps travelers find, compare, and <br>
-                book the best local hotels and Airbnb stays with ease.
+                Stayscan is your ultimate guide to discovering, <br>
+                comparing, and booking the finest local resorts in Davao<br>
+                seamlessly and stress-free!
             </p>
-            <a href="#About" class="btn btn-outline-light px-4 py-2" >Explore</a>
+            <a href="#About" class="btn btn-outline-light border rounded-pill px-4 py-2"
+             id="explorebtn">Explore</a>
         </div>
     </div>
 
-    <!--About Section-->
-    <div class="container-fluid text-dark py-5">
-        <div class="container text-center">
-            <p>Sunrises and sunsets are simply beautiful. Enjoy them while you’re on vacation! <br>
-                Let the journey begin, a world of adventures, <br>
-                relaxation, and memories awaits!
-            </p>
-        </div>
-        <div class="container">
-            <div class="row m-5">
-                <div class="col-md-12 col-lg-6 text-center text-lg-start">
-                    <p id="About">About</p>
-                    <h1>Welcome To <br> The Tresor</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                </div>
-                <div class="col-md-12 col-lg-6 d-flex align-items-center justify-content-center">
-                    <img class="img-fluid w-80 h-120" src="Resources/Buenavista.jpg" alt="">
-                </div>
-            </div>
-        </div>
+        <!--Information Section-->
+        <div class="container-fluid text-light p-5 my-5" id="About">
+            <div class="row">
+                <div class="col-lg">
+                    <div class="row w-75 ps-5">
+                        <div class="container d-flex justify-content-center pe-5" id="AboutContent">
+                            <h1 class="me-4">All ABOUT</h1>
+                        </div>
+                        <div class="container d-flex justify-content-center ps-5">
+                            <h1 class="me-4">STAY <h1 id="stayscan">SCAN</h1></h1>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="container-fluid p-5 mx-5">
+                            <p>
+                            Welcome to Stayscan, your go-to platform for discovering the best local resorts in Davao!
+                            Whether you're planning a weekend escape or a long-awaited vacation,
+                            we make it easy to find, compare, and book the perfect stay. <br> <br>
 
-        <!--1st column-->
-        <div class="row d-flex" style="height: auto;">
-            <div class="col-12 col-md-6 d-flex flex-column p-3">
-                <div class="row mb-5 justify-content-center align-items-start">
-                    <img class="img-fluid w-75" src="Resources/Urya.jpg" alt="">
-                </div>
-                <div class="row mt-5 p-5 d-flex justify-content-center align-items-end">
-                    <img class="img-fluid w-75" src="Resources/Heavens.jpg" alt="">
-                </div>
-            </div>
+                            At Stayscan, we believe that every traveler deserves a seamless and stress-free booking experience.
+                            That’s why we bring together a curated selection of resorts, detailed insights,
+                            and real-time availability—all in one place.
+                            Our mission is simple: to connect travelers with the best accommodations that Davao has
+                            to offer while ensuring a smooth and hassle-free booking process. <br> <br>
 
-            <!--2nd Column-->
-            <div class="col-12 col-md-6 d-flex flex-column justify-content-center align-items-center p-3">
-                <div class="row justify-content-center align-items-end mt-5 p-5">
-                    <img class="img-fluid w-100" src="Resources/Mergrande.jpg" alt="">
-                </div>
-                <div class="mt-auto w-50">
-                    <p id="Services">Services</p>
-                    <h1>Luxury Plaza <br> Resort For You</h1>
-                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit...</p>
-                    <a href="#" class="btn btn-outline-dark w-50">Explore</a>
-                </div>
-            </div>
-        </div>
+                            Start your journey with Stayscan today and experience Davao like never before!
+                            </p>
 
-         <!-- High Light Container -->
-        <div class="container-fluid p-2 my-5" style="background-color: #405751;">
-            <div class="container m-5 position-relative d-flex justify-content-center">
-                
-                <!-- Image Container (Reference for Overlapping) -->
-                <div class="col-12 col-md-8 position-relative">
-                    <img class="img-fluid w-80" src="Resources/Beach.jpg" alt="Image" style="height: 400px; object-fit: cover;">
+                        </div>
+                    </div>
                 </div>
 
-                <!-- Text Container (Overlapping Card) -->
-                <div class="col-12 col-md-5 bg-transparent border-none shadow-lg p-5 text-center text-dark
-                    text-md-start position-absolute top-50 start-50 translate-middle"
-                    style="border-radius: 10px; max-width: 400px;">
-                    <p>Pool Bar</p>
-                    <h1>The Canal <br> Club Poolside</h1>
-                    <p>Enjoy a luxury poolside experience with refreshing cocktails and an unforgettable ambiance.</p>
-                    <a class="btn btn-outline-dark w-50" href="">Explore</a>
+                <!--Water Fall Image-->
+                <div class="col-lg">
+                    <img src="Resources/waterfall.jpg" alt="waterfall Image">
                 </div>
-                
             </div>
         </div>
         
-        <!--Listing-->
-        <div class="container-fluid p-2 d-flex flex-column align-items-center">
-            <div class="col-md-8 p-3 my-5">
-                <p id="Rooms">Rooms</p>
-                <h1>Stay With Us</h1>
-                <div class="row">
-                    <div class="col-lg my-3">
-                        <img src="Resources/Room1.jpg" alt="" style="height: 150px; width: 180px;">
-                        <h1>Room1</h1>
-                        <p>Bla Bla Bla Bla</p>
-                        <a class="btn btn-outline-dark" href="">View here ></a>
-                    </div>
-                    <div class="col-md my-3">
-                        <img src="Resources/Room2.jpg" alt="" style="height: 150px; width: 180px;">
-                        <h1>Room2</h1>
-                        <p>Bla Bla Bla Bla</p>
-                        <a class="btn btn-outline-dark" href="">View here ></a>
-                    </div>
-                    <div class="col-md my-3">
-                        <img src="Resources/Room3.jpg" alt="" style="height: 150px; width: 180px;">
-                        <h1>Room3</h1>
-                        <p>Bla Bla Bla Bla</p>
-                        <a class="btn btn-outline-dark" href="">View here ></a>
+        <!--Featured Places-->
+        <div class="container-fluid p-0 my-5 text-light d-flex justify-content-center" id="featured">
+            <div class="row w-100">
+                <div class="row d-flex align-items-center">
+                    <div class="container text-center">
+                        <h3 class="m-3" id="stayscan">EXPLORE RESORTS</h3>
+                        <p class="m-2">Start your journey with Stayscan today and experience Davao like never before!</p>
                     </div>
                 </div>
-                <div class="container d-flex flex-column align-items-center">
-                    <h1 class="d-flex my-4 flex-column align-items-center text-center">
-                        Come as you are and we will <br> 
-                        take care of the rest
-                    </h1>
-                    <a class="btn btn-outline-dark" href="">Check Availability</a>
-                </div>
-            </div>
-        </div>  
-    </div>
 
-        <!--Email Subs-->
-        <div class="container-fluid p-5 text-light" style="background-color: #282B32;">
-            <div class="row">
-                <div class="col-lg p-3">
-                    <h1>
-                        Signup For Special <br>
-                        Offers and Promotions
-                    </h1>
+                <!-- CARDS for Featured Places -->
+                <div class="container-fluid px-5 overflow-hidden d-flex justify-content-center">
+                    <!-- First Card -->
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex flex-column justify-content-center">
+                        <div class="card border-primary rounded-4 overflow-hidden shadow w-75 h-75">
+                            <img class="h-100 w-100" src="Resources/pic1.jpg" alt="Featured Image">
+                        </div>
+                        <h3 class="my-3"><strong> RESORT 1</strong></h3>
+                    </div>
+
+                    <!-- Second Card -->
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex flex-column justify-content-center">
+                        <div class="card border-primary rounded-4 overflow-hidden shadow w-75 h-75">
+                            <img class="h-100 w-100" src="Resources/pic2.jpg" alt="Featured Image">
+                        </div>
+                        <h3 class="my-3"><strong> RESORT 2</strong></h3>
+                    </div>
+
+                    <!-- Third Card -->
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex flex-column justify-content-center">
+                        <div class="card border-primary rounded-4 overflow-hidden shadow w-75 h-75">
+                            <img class="h-100 w-100" src="Resources/pic3.jpg" alt="Featured Image">
+                        </div>
+                        <h3 class="my-3"><strong> RESORT 3</strong></h3>
+                    </div>
+
+                    <!-- Fourth Card -->
+                    <div class="col-lg-3 col-md-6 col-sm-12 d-flex flex-column justify-content-center">
+                        <div class="card border-primary rounded-4 overflow-hidden shadow w-75 h-75">
+                            <img class="h-100 w-100" src="Resources/pic4.jpg" alt="Featured Image">
+                        </div>
+                        <h3 class="my-3"><strong> RESORT 4</strong></h3>
+                    </div>
                 </div>
-                <div class="col-lg p-5">
-                    <form action="">
-                        <input type="email" name="emailForm" placeholder="Enter Your Email Address"
-                        style="background: transparent; border: none; border-bottom: 1px solid white;
-                        width: 300px; padding-bottom: 8px; color: white;">
-                        <input type="submit" value="Subscribe >"
-                        style="border: none; background: transparent; padding-bottom: 8px; color: white;">
-                    </form>
-                </div>
-               
             </div>
         </div>
 
-        <!--Footer-->
-        <footer class="container-fluid text-light d-flex" style="background-color: #405751;" id="Contact">
-            <div class="col-sm-16 p-5 mx-3">
-                <div class="row mb-3">
-                    <img src="Resources/Tresor.png" alt="" style="height: 150px; width: 200px;">
-                </div>
-                <div class="row">
-                    <p>Copyright The Tresor. All Right Reserved.</p>
-                </div>
-            </div>
-            <div class="col-sm-2 p-5 mx-3">
-                <p>MENU</p>
-                <div class="row">
-                    <a href="#banner">Home</a>
-                    <a href="#Rooms">Rooms</a>
-                    <a href="#About">About</a>
-                    <a href="#Contact">Contact</a>
-                </div>
-            </div>
-            <div class="col-sm-16 p-5 mx-3">
-                <p>CONTACT</p>
-                <div class="row">
-                    <p>TheTresor@gmail.com</p>
-                    <P>112 239 4612</P>
-                    <p>Saint St. Bario Obrero, <br>
-                        Davao City Davao Del Sur
+        <!--Contact Informations-->
+        <footer class="container-fluid text-light" id="Contact">
+            <div class="row p-5">
+                <div class="col">
+                    <p>
+                    CONTACT <br>
+                    stayscan@gmail.com <br>
+                    112 239 4612 <br> <br>
+
+                    Saint St. Bario Obrero, <br>
+                    Davao City Davao Del Sur <br>
                     </p>
-                    <p><a href="">Terms of Service</a></p>
+                </div>
+                <div class="col-lg-8 d-flex justify-content-start">
+                    <h2 id="AboutContent">FEATURE RESORT <i class="bi bi-arrow-right mx-3"></i></h2>
+                    <form action="" method="POST">
+                        <input class="border-0 border-bottom border-light bg-transparent text-light" type="email"
+                         name="email" placeholder="Enter your email">
+                    </form>
                 </div>
             </div>
         </footer>
+
 
     <!-- Bootstrap Script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>

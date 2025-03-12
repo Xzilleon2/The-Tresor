@@ -1,0 +1,133 @@
+@font-face {
+    font-family: 'Body-Grotesque';
+    src: url('../fonts/Body-Grotesque.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Body-Text';
+    src: url('../fonts/Body-Text.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+#banner {
+    position: relative;
+    height: 600px;
+    background: url('../Banner.png') no-repeat center center;
+    background-size: cover;
+    background-blend-mode: darken;
+    border: none;
+    z-index: 0;
+}
+#banner::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Dark overlay */
+    z-index: 1;
+}
+#banner .container {
+    position: relative;
+    z-index: 2; /* Keep text above the overlay */
+}
+#banner::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 200px; /* Adjust height to control the blur size */
+    background: linear-gradient(to top, #05152c, rgba(0, 0, 255, 0) 100%);
+    filter: blur(0px); /* Increase blur strength */
+    z-index: 2;
+    pointer-events: none;
+}
+#featured {
+    position: relative;
+    height: 700px;
+    width: 100%;
+    background: url('../pic5.png') no-repeat center center;
+    background-size: cover;
+    background-blend-mode: darken;
+    border: none;
+    z-index: 0;
+}
+#featured::before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Height of the blur */
+    background: linear-gradient(to top, #05152c, rgba(0, 0, 255, 0) 100%);
+    filter: blur(0px); /* Stronger blur effect */
+    z-index: -1;
+    pointer-events: none;
+}
+#featured::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 150px; /* Height of the blur */
+    background: linear-gradient(to bottom, #05152c, rgba(0, 0, 255, 0) 100%);
+    filter: blur(0px); /* Stronger blur effect */
+    z-index: -1;
+    pointer-events: none;
+}
+#featured .container .row {
+    position: relative;
+    z-index: 10;
+}
+body{
+    background-color: #05152c;
+    margin: 0;
+    padding: 0;
+}
+body p{
+    font-family: 'Poppins';
+}
+body h1,h2,h3,h4,h5,h6{
+    font-family: 'Body-Grotesque';
+}
+body a{
+    font-family: 'Body-Grotesque';
+    text-decoration: none;
+    color: white;
+}
+body a:hover{
+    text-decoration: underline;
+}
+#Logo{
+    text-decoration: none;
+}
+#explorebtn{
+    width: 100px;
+}
+#AboutContent > h1, h2{
+    font-family: 'Poppins';
+}
+#stayscan{
+    color: #91bdff;
+}
+.card{
+    border: solid 2px #91bdff;
+    border-radius: 30px;
+    width: 50%;
+    height: 50%;
+    z-index: 20;
+}
+::placeholder{
+    color: white;
+    opacity: 1;
+}
+input:focus {
+    border: none;
+    border-bottom: solid 1px white;
+    outline: none;
+}
