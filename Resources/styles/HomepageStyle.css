@@ -1,0 +1,78 @@
+body{
+    background: linear-gradient(to bottom, #0a0f2c, #0a0f2c, #1a3480);
+}
+body p{
+    font-family: 'Roboto', san-serif;
+    text-align: justify;
+}
+body h1{
+    font-family: 'Analogue', san-serif;
+}
+body a{
+    text-decoration: none;
+    color: white;
+}
+body a:hover{
+    text-decoration: underline;
+}
+#ListedContents{
+    max-height: 60vh;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: none;
+    display: block;
+}
+.card {
+    position: relative; /* Ensure the ::after is positioned relative to the card */
+    height: 100%;
+    min-height: 250px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    overflow: hidden; /* Prevents the blur from leaking outside */
+}
+
+.card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; /* Attach to the bottom of the card */
+    left: 0;
+    width: 100%;
+    height: 100px; /* Height of the blur */
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.8), rgba(20, 20, 43, 0) 100%);
+    filter: blur(30px); /* Increase the blur strength */
+    z-index: 0; /* Keep it above the background but below the content */
+    pointer-events: none;
+}
+.card .row{
+    z-index: 2;
+}
+#BusinessImg {
+    height: 100%;
+    width: 100%;
+}
+#Banner {
+    background: url('../pic6.jpg') no-repeat center center;
+    background-size: cover;
+    height: 400px;
+    position: relative;
+}#ProfileDrop {
+    background-color: #04234e !important; /* Sets background color */
+    border-radius: 5px;
+    color: white;
+}
+#ProfileDrop .dropdown-menu {
+    background-color: #04234e !important; /* Fixes white background */
+    border: none;
+}
+#ProfileDrop .dropdown-item {
+    color: white !important;
+}
+
+#ProfileDrop .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
+
+#footerHome{
+    background: #0a0f2c;
+}
