@@ -1,0 +1,71 @@
+#banner {
+    background-color: #0a0f2c;
+    background-size: cover;
+    position: relative;
+    width: 100%;
+    height: 20px; /* Make banner full height */
+}
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Roboto', sans-serif;
+    background-color: #0a0f2c;
+}
+body p{
+    font-family: 'Roboto', sans-serif;
+}
+body h2{
+    font-family: 'Analogue', sans-serif;
+}
+body a{
+    text-decoration: none;
+    color: white;
+}
+.sidebar {
+    color: white;
+    height: 100vh;
+    padding: 20px;
+}
+.sidebar a {
+    color: white;
+    text-decoration: none;
+    display: block;
+    padding: 10px 0;
+}
+.sidebar a:hover {
+    background: #555;
+    padding-left: 10px;
+    transition: 0.3s;
+}
+#RecentlyListed {
+    background-color: #0b3063;
+    color: white;
+    max-height: 440px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    scrollbar-width: thin;
+}
+#BusinessImg {
+    height: 100%;
+    width: 100%;
+}
+#ProfileDrop {
+    background-color: #0b3063 !important; /* Sets background color */
+    border-radius: 5px;
+    color: white;
+}
+#ProfileDrop .dropdown-menu {
+    background-color: #0b3063 !important; /* Fixes white background */
+    border: none;
+}
+#ProfileDrop .dropdown-item {
+    color: white !important;
+}
+#ProfileDrop .dropdown-item:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* Light hover effect */
+}
+#recentBook{
+    background-color: #0b3063;
+    color: white;
+    border-radius: 15px;
+}

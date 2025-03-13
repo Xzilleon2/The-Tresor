@@ -1,5 +1,5 @@
 <!-- Navbar -->
-<nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 m-0">
+<nav class="navbar navbar-expand-lg navbar-light bg-dark bg-opacity-25 m-0 shadow-lg">
     <div class="container">
         <!-- logo -->
         <a class="navbar-brand text-light" href="#" id="Logo">
@@ -12,7 +12,7 @@
         <!-- Collapsible Menu -->
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav mx-auto text-center">
-                <li class="nav-item mx-2"><a class="nav-link text-white" href="#">Home</a></li>
+                <li class="nav-item mx-2"><a class="nav-link text-white" href="../frames/Homepage.php">Home</a></li>
                 <li class="nav-item mx-2"><a class="nav-link text-white" href="#featured">Room</a></li>
                 <li class="nav-item mx-2"><a class="nav-link text-white" href="#About">About</a></li>
                 <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
@@ -27,10 +27,6 @@
                     <li><a class="dropdown-item text-light text-decoration-none" href="../Verify/logout.php">Logout</a></li>
                 </ul>
             </div>
-
-
-
-            
         </div>
     </div>
 </nav>

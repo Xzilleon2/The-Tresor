@@ -1,7 +1,7 @@
 <?php
 session_start();
 include('../Connection/db_connect.php');
-include('../Verify/fetchbusiness.php');
+include('../Verify/fetchbusinessuser.php');
 
 // Check if user is logged in
 if (!isset($_SESSION['email'])) {
@@ -75,7 +75,7 @@ if (!isset($_SESSION['email'])) {
                                     <!-- Information Area -->
                                     <div class="col-lg-7 w-100 text-light">
                                         <h1><?= htmlspecialchars($row['name']) ?></h1>
-                                        <p><?= htmlspecialchars($row['location']) ?></p>
+                                        <p><i class="bi bi-geo-alt-fill"> </i><?= htmlspecialchars($row['location']) ?></p>
                                     </div>
                                 </div>
 

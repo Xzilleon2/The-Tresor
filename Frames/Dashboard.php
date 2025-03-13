@@ -32,65 +32,22 @@ include('../Verify/recentlybooked.php');
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        #banner {
-            background: url('../Resources/Banner.png') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            width: 100%;
-            height: 30vh; /* Make banner full height */
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', san-serif;
-        }
-        body p{
-            font-family: 'Roboto', san-serif;
-        }
-        body h2{
-            font-family: 'Analogue', san-serif;
-        }
-        body a{
-            text-decoration: none;
-            color: white;
-        }
-        .sidebar {
-            color: white;
-            height: 100vh;
-            padding: 20px;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px 0;
-        }
-        .sidebar a:hover {
-            background: #555;
-            padding-left: 10px;
-            transition: 0.3s;
-        }
-        #RecentlyListed {
-            max-height: 350px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            scrollbar-width: thin;
-        }
-        #BusinessImg {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="../Resources/styles/DashboardStyle.css">
+
 </head>
 <body>
-    <div class="container-fluid d-flex p-0">
+    <div class="row">        
+        <!-- Navbar -->
+        <?php include('../includes/navbar.php');?>
+    </div>
+
+    <div class="row d-flex p-0">
         <!-- Sidebar -->
          <?php include('../includes/sidebar.php');?>
-
+         
         <div class="col">
             <!-- Main Content -->
-            <div class="row-lg bg-success">
+            <div class="row-lg">
                 <div class="container p-0 d-flex justify-content-end col-md-9 col-lg-10 w-100">
                     <div class="row-lg-10 m-0 w-100">
                         <div class="d-flex justify-content-end w-100 p-3 shadow-sm" id="banner">
@@ -105,18 +62,20 @@ include('../Verify/recentlybooked.php');
             <!--Listing Content-->
             <div class="container">
                 <div class="row">
-                    <!-- (Recently Visited) -->
-                    <div class="col-md-12">
+                    <!-- Display the Recently Booked Resorts -->
+                    <div class="col-md-12 text-light" style="background-color: #0a0f2c;">
                         <div class="p-3">
                             <h3>Recently Booked</h3>
                             <div class="container-fluid">
+
                                 <div class="d-flex flex-wrap justify-content-center" id="RecentlyListed">
                                 <?php if (isset($result) && $result->num_rows > 0) { ?>
                                     <?php while ($row = $result->fetch_assoc()) { ?>
+
                                         <a href="business_details.php?id=<?= htmlspecialchars($row['business_id']) ?>
                                           " class="text-decoration-none text-dark w-75 m-5">
 
-                                            <div class="card d-flex flex-column justify-content-center border-dark p-3 shadow-md">
+                                            <div class="card d-flex flex-column justify-content-center border-dark p-3 shadow-md" id="recentBook">
                                                 <div class="row">
                                                     <div class="col-lg-7 ">
                                                         <h1><?= htmlspecialchars($row['business_name']) ?></h1>

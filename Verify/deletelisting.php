@@ -1,5 +1,6 @@
 <?php
-include "../Connection/db_connect.php";
+session_start(); // Start the session
+include "../Connection/db_connect.php"; // Include database connection
 
 // Check if the form is submitted via POST
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -12,28 +13,47 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $query = "DELETE FROM businesses WHERE owner_id = ? AND name = ?";
 
         // Prepare the statement
-        if ($stmt = mysqli_prepare($conn, $query)) {
-            // Bind parameters
-            mysqli_stmt_bind_param($stmt, "is", $id, $businessName);
+        $stmt = $conn->prepare($query);
+
+        if ($stmt) {
+            // Bind parameters to the prepared statement
+            $stmt->bind_param("is", $id, $businessName);
 
             // Execute the statement
-            if (mysqli_stmt_execute($stmt)) {
-                // ✅ Successfully deleted, redirect to dashboard
-                header('Location: ../Frames/Dashboard.php');
+            if ($stmt->execute()) {
+                // ✅ Successfully deleted, set success message
+                $_SESSION['message'] = "Business deleted successfully.";
+                $_SESSION['message_type'] = "success";
+                header('Location: ../Frames/BusinessDash.php');
                 exit();
             } else {
-                echo "Error deleting business: " . mysqli_error($conn); // Debugging
+                // ❌ Failed to delete, set error message
+                $_SESSION['message'] = "Error deleting business: " . $stmt->error;
+                $_SESSION['message_type'] = "danger";
+                header('Location: ../Frames/BusinessDash.php');
+                exit();
             }
 
             // Close the statement
-            mysqli_stmt_close($stmt);
+            $stmt->close();
         } else {
-            echo "SQL Prepare Error: " . mysqli_error($conn); // Debugging
+            // ❌ Error preparing the statement
+            $_SESSION['message'] = "SQL Prepare Error: " . $conn->error;
+            $_SESSION['message_type'] = "danger";
+            header('Location: ../Frames/BusinessDash.php');
+            exit();
         }
     } else {
-        echo "Error: Missing required fields.";
+        // ❌ Missing required fields
+        $_SESSION['message'] = "Error: Missing required fields.";
+        $_SESSION['message_type'] = "warning";
+        header('Location: ../Frames/BusinessDash.php');
+        exit();
     }
 } else {
-    echo "Invalid request.";
+    // ❌ Invalid request method
+    $_SESSION['message'] = "Invalid request.";
+    $_SESSION['message_type'] = "danger";
+    header('Location: ../Frames/BusinessDash.php');
+    exit();
 }
-?>

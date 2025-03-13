@@ -16,7 +16,7 @@ body a:hover{
     text-decoration: underline;
 }
 #ListedContents{
-    max-height: 60vh;
+    max-height: 100vh;
     overflow-y: auto;
     overflow-x: hidden;
     scrollbar-width: none;
@@ -47,10 +47,6 @@ body a:hover{
 .card .row{
     z-index: 2;
 }
-#BusinessImg {
-    height: 100%;
-    width: 100%;
-}
 #Banner {
     background: url('../pic6.jpg') no-repeat center center;
     background-size: cover;
@@ -62,7 +58,7 @@ body a:hover{
     color: white;
 }
 #ProfileDrop .dropdown-menu {
-    background-color: #04234e !important; /* Fixes white background */
+    background-color: #052858 !important; /* Fixes white background */
     border: none;
 }
 #ProfileDrop .dropdown-item {
@@ -75,4 +71,23 @@ body a:hover{
 
 #footerHome{
     background: #0a0f2c;
+}
+#businessCard {
+    background-size: contain; /* Keeps the entire image visible without cropping */
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 100%;
+    height: 250px;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease;
+}
+#businessCard:hover {
+    transform: translateY(-5px); /* Optional hover effect */
+}   
+/* Make sure the image itself adjusts well inside the container */
+#BusinessImg {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Ensures the image maintains its aspect ratio while covering the container */
 }

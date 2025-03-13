@@ -36,58 +36,16 @@ include('../Verify/bookingNotif.php');
     rel="stylesheet">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-    <style>
-        #banner {
-            background: url('../Resources/Banner.png') no-repeat center center;
-            background-size: cover;
-            position: relative;
-            width: 100%;
-            height: 30vh;
-        }
-        body {
-            margin: 0;
-            padding: 0;
-            font-family: 'Roboto', sans-serif;
-        }
-        body p{
-            font-family: 'Roboto', sans-serif;
-        }
-        body h1{
-            font-family: 'Analogue', sans-serif;
-        }
-        body a{
-            text-decoration: none;
-            color: white;
-        }
-        .sidebar {
-            color: white;
-            height: 100vh;
-            padding: 20px;
-        }
-        .sidebar a {
-            color: white;
-            text-decoration: none;
-            display: block;
-            padding: 10px 0;
-        }
-        .sidebar a:hover {
-            background: #555;
-            padding-left: 10px;
-            transition: 0.3s;
-        }
-        #RecentlyListed {
-            max-height: 350px;
-            overflow-y: auto;
-            overflow-x: hidden;
-            scrollbar-width: thin;
-        }
-        #BusinessImg {
-            height: 100%;
-            width: 100%;
-        }
-    </style>
+    <link rel="stylesheet" href="../Resources/styles/DashboardStyle.css">
+
 </head>
 <body>
+
+    <div class="row">    
+        <!-- Navbar -->
+        <?php include('../includes/navbar.php');?>
+    </div>
+    
     <div class="container-fluid d-flex p-0">
         <!-- Sidebar -->
         <?php include('../includes/sidebar.php');?>
@@ -109,8 +67,8 @@ include('../Verify/bookingNotif.php');
             <!--Listing Content-->
             <div class="container">
                 <div class="row">
-                    <!-- Left Column (Recently Visited) -->
-                    <div class="col-md-8">
+                    <!-- Display the listed businesses of the owner from database-->
+                    <div class="col-md-8 text-light">
                         <div class="p-3">
                             <h3>Recently Listed</h3>
                             <div class="container-fluid">
@@ -140,7 +98,7 @@ include('../Verify/bookingNotif.php');
                                         <!-- Update Button -->
                                         <button class="btn btn-sm mt-2 text-light" data-bs-toggle="modal" 
                                         data-bs-target="#updateModal<?= $row['id'] ?>"
-                                        style="background-color: #405751;">Update</button>
+                                        style="background-color: #0b3063;">Update</button>
 
                                         <!-- Update Listing Modal -->
                                         <div class="modal fade" id="updateModal<?= $row['id'] ?>" tabindex="-1" role="dialog" 
@@ -193,7 +151,7 @@ include('../Verify/bookingNotif.php');
 
                 <!-- Right Column (Action Part) -->
                 <div class="col-md-4 my-5">
-                    <div class="container text-light bg-opacity-25 p-3" style="background-color: #405751;">
+                    <div class="container text-light bg-opacity-25 p-3" style="background-color: #0b3063;">
                         <h4>Business Settings</h4>
                         <!--Add Button-->
                         <button class="btn btn-light btn-sm my-2 w-75" data-bs-toggle="modal"
@@ -260,7 +218,7 @@ include('../Verify/bookingNotif.php');
                         <form action="../Verify/deletelisting.php" method="POST">
                             <label for="name">Listed Business Name</label>
                             <input type="text" name="name">
-                            <input type="hidden" name="id" value="<?= htmlspecialchars($_SESSION['id']) ?>"">
+                            <input type="text" name="id" value="<?= htmlspecialchars($_SESSION['id']) ?>"">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
