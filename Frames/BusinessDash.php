@@ -47,12 +47,9 @@ include('../Verify/bookingNotif.php');
     </div>
     
     <div class="container-fluid d-flex p-0">
-        <!-- Sidebar -->
-        <?php include('../includes/sidebar.php');?>
-
         <div class="col">
             <!-- Main Content -->
-            <div class="row-lg bg-success">
+            <div class="row-lg">
                 <div class="container p-0 d-flex justify-content-end col-md-9 col-lg-10 w-100">
                     <div class="row-lg-10 m-0 w-100">
                         <div class="d-flex justify-content-end w-100 p-3 shadow-sm" id="banner">
@@ -67,7 +64,7 @@ include('../Verify/bookingNotif.php');
             <!--Listing Content-->
             <div class="container">
                 <div class="row">
-                    <!-- Display the listed businesses of the owner from database-->
+                    <!-- Display the listed businesses of the owner from database using fetchbusiness-->
                     <div class="col-md-8 text-light">
                         <div class="p-3">
                             <h3>Recently Listed</h3>
@@ -77,7 +74,7 @@ include('../Verify/bookingNotif.php');
                                     <?php while ($row = $result->fetch_assoc()) { ?>
                                         <a href="business_details.php?id=<?= htmlspecialchars($row['id']) ?>" 
                                         class="text-decoration-none text-dark w-75 m-5">
-                                            <div class="card d-flex flex-column justify-content-center border-dark p-3 shadow-md">
+                                            <div class="card d-flex flex-column justify-content-center border-dark p-3 shadow-md" id="recentBook">
                                                 <div class="row">
                                                     <div class="col-lg-7 ">
                                                         <h1><?= htmlspecialchars($row['name']) ?></h1>
@@ -109,7 +106,7 @@ include('../Verify/bookingNotif.php');
                                                         <h5 class="modal-title" id="updateModalLabel<?= $row['id'] ?>">Update Listing</h5>
                                                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                     </div>
-                                                    <div class="modal-body">
+                                                    <div class="modal-body text-dark">
                                                         <form action="../Verify/updateListing.php" method="POST" enctype="multipart/form-data">
                                                             <input type="hidden" name="business_id" value="<?= $row['id'] ?>">
 
@@ -218,7 +215,7 @@ include('../Verify/bookingNotif.php');
                         <form action="../Verify/deletelisting.php" method="POST">
                             <label for="name">Listed Business Name</label>
                             <input type="text" name="name">
-                            <input type="text" name="id" value="<?= htmlspecialchars($_SESSION['id']) ?>"">
+                            <input type="hidden" name="id" value="<?= htmlspecialchars($_SESSION['id']) ?>"">
                             <button type="submit" class="btn btn-danger">Delete</button>
                         </form>
                     </div>
@@ -227,7 +224,7 @@ include('../Verify/bookingNotif.php');
         </div>
 
         <!-- Notification Modal -->
-        <!-- Used to review the bookings of customers -->
+        <!-- Used to review the bookings of customers using business notif-->
         <div class="modal fade" id="notificationModal" tabindex="-1" aria-labelledby="notificationModalLabel" 
         aria-hidden="true">
             <div class="modal-dialog modal-xl">

@@ -17,7 +17,7 @@ if (isset($_GET['id'])) {
     $stmt->execute();
     $result = $stmt->get_result();
 
-    // Check if business exists
+    // Check if business exists in booking_process
     if ($row = $result->fetch_assoc()) {
 ?>
         <!DOCTYPE html>
@@ -29,59 +29,21 @@ if (isset($_GET['id'])) {
              rel="stylesheet">
             <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
             <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css">
-            <style>
-                body {
-                margin: 0;
-                padding: 0;
-                font-family: 'Roboto', san-serif;
-                }
-                body p{
-                    font-family: 'Roboto', san-serif;
-                }
-                body h1{
-                    font-family: 'Analogue', san-serif;
-                }
-                body a{
-                    text-decoration: none;
-                    color: white;
-                }
-                .sidebar {
-                    color: white;
-                    height: 100vh; 
-                    width: 100%; 
-                    padding: 20px;
-                }
-                .sidebar a {
-                    color: white;
-                    text-decoration: none;
-                    display: block;
-                    padding: 10px 0;
-                }
-                .sidebar a:hover {
-                    background: #555;
-                    padding-left: 10px;
-                    transition: 0.3s;
-                }
-            </style>
+            <link rel="stylesheet" href="../Resources/styles/DashboardStyle.css">
         </head>
         <body>
-            <div class="container-fluid vh-100">
-                <div class="row h-100">
-                    <div class="col-lg-2 d-flex flex-column vh-100 p-0">
-                        <!-- Sidebar -->
-                        <?php include('../includes/sidebar.php');?>
-                    </div>
 
+            <div class="row">
+                <div class="row-lg w-100 p-0 d-flex justify-content-center p-3">
+                    <img class="w-75 shadow-md" src="../Resources/BusinessImg/<?= $row['image_path'] ?? 'default.jpg' ?>"
+                    alt="Business Image" style="height: 320px;">
+                </div>
+                <div class="row d-flex justify-content-center">
                     <!-- Content design for the main panel -->
-                    <div class="col-lg-10 d-flex flex-column">
-                        <div class="row-lg d-flex justify-content-center p-3 m-3">
-                            <img src="../Resources/BusinessImg/<?= $row['image_path'] ?? 'default.jpg' ?>"
-                            alt="Business Image" style="width:300px; height:auto;">
-                        </div>
-
+                    <div class="col-lg-8 d-flex flex-column justify-content-center align-items-center">
                         <!-- Business Details -->
                         <div class="row-lg d-flex justify-content-center w-75">
-                            <div class="col-lg text-dark m-3 p-3" style="background-color: #405751;">
+                            <div class="col-lg text-light m-3 p-3" style="background-color: #0b3063; border-radius: 20px;">
                                     <h1><?= $row['name'] ?></h1>
                                     <p><strong>Description:</strong> <?= $row['description'] ?></p>
                                     <p><strong>Location:</strong> <?= $row['location'] ?></p>
@@ -92,8 +54,12 @@ if (isset($_GET['id'])) {
                         </div>
                     </div>
                 </div>
-            </div>
 
+            </div>
+            
+
+
+           
             <!-- Booking Modal -->
             <div class="modal fade" id="bookModal" tabindex="-1"
                 role="dialog" aria-labelledby="bookModalLabel" aria-hidden="true">

@@ -56,8 +56,7 @@ if($_SESSION['role'] != 'admin'){
             <!-- Sidebar -->
             <?php include('../includes/sidebar.php'); ?>
 
-
-            <!-- User Table Data -->
+            <!-- User Table Data using fetuser -->
             <div class="col-md-10">
                 <div class="mt-4">
                     <table id="example" class="table table-striped table-bordered">

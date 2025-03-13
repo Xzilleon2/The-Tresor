@@ -60,7 +60,7 @@ if (!isset($_SESSION['email'])) {
                 </div>
             </div>
             
-            <!--This section shows the available businesses listed in the database-->
+            <!--This section shows the available businesses listed in the database using fetchbusinessuser-->
             <div class="row row-cols-1 row-cols-md-2 row-cols-lg-3 my-5 p-2 d-flex justify-content-center" id="ListedContents">
                 <?php while ($row = $result->fetch_assoc()) { ?>
 

@@ -18,9 +18,9 @@
                 <li class="nav-item mx-2"><a class="nav-link text-white" href="#Contact">Contact</a></li>
             </ul> 
             <!-- Profile Menu -->
-            <div class="col-lg-2 d-flex flex-column justify-content-center align-items-center position-relative dropdown" id="ProfileDrop">
-                <button class="btn w-100 dropdown-toggle text-white" type="button" id="profileMenu" data-bs-toggle="dropdown" aria-expanded="false">
-                <i class="bi bi-person-circle"></i> PROFILE
+            <div class="col-lg-3 d-flex flex-column justify-content-center align-items-center position-relative dropdown" id="ProfileDrop">
+                <button class="btn w-100 dropdown-toggle text-white overflow-hidden" type="button" id="profileMenu" data-bs-toggle="dropdown" aria-expanded="false">
+                <i class="bi bi-person-circle"></i> <?php echo $_SESSION['email']; ?>
                 </button>
                 <ul class="dropdown-menu position-absolute" aria-labelledby="profileMenu" id="ProfileDrop">
                     <li><a class="dropdown-item text-light text-decoration-none" href="../Frames/Dashboard.php">Dashboard</a></li>

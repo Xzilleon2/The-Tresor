@@ -42,9 +42,6 @@ include('../Verify/recentlybooked.php');
     </div>
 
     <div class="row d-flex p-0">
-        <!-- Sidebar -->
-         <?php include('../includes/sidebar.php');?>
-         
         <div class="col">
             <!-- Main Content -->
             <div class="row-lg">

@@ -38,7 +38,6 @@ body a{
     transition: 0.3s;
 }
 #RecentlyListed {
-    background-color: #0b3063;
     color: white;
     max-height: 440px;
     overflow-y: auto;
